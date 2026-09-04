@@ -1,0 +1,40 @@
+{% comment %}
+  Feature Callout Block Definition for Horizon Theme
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "Feature Callout",
+  "settings": [
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "Icon",
+      "options": [
+        { "value": "sparkles", "label": "Sparkles" },
+        { "value": "shield", "label": "Shield" },
+        { "value": "bottle", "label": "Bottle" },
+        { "value": "check", "label": "Checkmark" }
+      ],
+      "default": "sparkles"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Feature Title",
+      "default": "3 Custom Modes"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Feature Description",
+      "default": "Seamlessly switch between rinse, lather, and massage modes."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Feature Callout"
+    }
+  ]
+}
+{% endschema %}

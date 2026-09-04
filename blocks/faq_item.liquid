@@ -1,0 +1,34 @@
+{% comment %}
+  FAQ Item Block Definition for Horizon Theme
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "FAQ Question",
+  "settings": [
+    {
+      "type": "text",
+      "id": "question",
+      "label": "Question",
+      "default": "Will this sprayer fit my existing garden hose or shower?"
+    },
+    {
+      "type": "richtext",
+      "id": "answer",
+      "label": "Answer",
+      "default": "<p>Yes! It features a standard 3/4-inch thread connector compatible with virtually all outdoor garden hoses and indoor shower adapters.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_by_default",
+      "label": "Open by Default",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Question"
+    }
+  ]
+}
+{% endschema %}

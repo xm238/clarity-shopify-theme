@@ -1,0 +1,39 @@
+{% comment %}
+  Step Block Definition for Horizon Theme
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "Step",
+  "settings": [
+    {
+      "type": "text",
+      "id": "step_number",
+      "label": "Step Number",
+      "default": "01"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Step Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Step Title",
+      "default": "Attach & Fill"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Step Explanation",
+      "default": "Connect to standard hose and add your favorite shampoo into the built-in reservoir."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Step"
+    }
+  ]
+}
+{% endschema %}

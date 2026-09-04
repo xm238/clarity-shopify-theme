@@ -1,0 +1,48 @@
+{% comment %}
+  Testimonial Block Definition for Horizon Theme
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "Testimonial Card",
+  "settings": [
+    {
+      "type": "range",
+      "id": "rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "label": "Star Rating",
+      "default": 5
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Testimonial Quote",
+      "default": "Bath time used to be a stressful ordeal, but this gentle 3-mode sprayer made it so peaceful. My dog actually stands still and enjoys the massage!"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar",
+      "label": "Customer Avatar / Photo"
+    },
+    {
+      "type": "text",
+      "id": "author",
+      "label": "Customer Name",
+      "default": "Elena R."
+    },
+    {
+      "type": "checkbox",
+      "id": "verified",
+      "label": "Show Verified Buyer Badge",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonial Card"
+    }
+  ]
+}
+{% endschema %}

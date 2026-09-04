@@ -1,0 +1,42 @@
+{% comment %}
+  Benefit Block Definition for Horizon Theme
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "Benefit",
+  "settings": [
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "Icon",
+      "options": [
+        { "value": "sparkles", "label": "Sparkles / Gentle" },
+        { "value": "shield", "label": "Shield / Safe" },
+        { "value": "shipping", "label": "Shipping / Truck" },
+        { "value": "box", "label": "Box" },
+        { "value": "checkmark", "label": "Checkmark" },
+        { "value": "heart", "label": "Heart" }
+      ],
+      "default": "sparkles"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Ease of Use"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Intuitive 3-mode operation designed for quick, hassle-free grooming sessions."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefit"
+    }
+  ]
+}
+{% endschema %}
