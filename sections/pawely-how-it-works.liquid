@@ -1,46 +1,62 @@
 <section class="py-16 sm:py-20 bg-brand-cream border-b border-stone-200/50">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<!-- Header -->
-<div class="text-center max-w-xl mx-auto mb-14">
-<h2 class="text-3xl sm:text-4xl font-extrabold text-brand-dark tracking-tight mb-2">{{ section.settings.heading }}</h2>
-<p class="text-sm text-stone-600 font-medium">{{ section.settings.subheading }}</p>
-</div>
-<!-- Steps Grid -->
-<div class="!grid grid-cols-1 md:grid-cols-3 gap-10 max-w-4xl mx-auto">
-<!-- Step 1 -->
-<div class="flex flex-col items-center text-center">
-<div class="w-36 h-36 rounded-full overflow-hidden mb-5 border-4 border-white shadow-lg bg-stone-200 relative">
-<img width="800" height="800" alt="Step 1 Connect Pawely sprayer" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAB-k9a1_cWAegs6gp4hTvPaK8p6RkfsuIe9kKWjbd4-02Wdi9UsmkGU_JVBT8kaU2nL-qp8963Hxkqyrbkjql6AyP0hkG43KuDIhDVs_nvO8LM3Zq-UxxxtIBazifTvg7J2KUfdV9BVAJj6JHhfvlJSVWOH6qGeAZ6AlncK8UyUcUR_ziOnm_ti7DJ7U9HEIdSiB9mD044Sga9zW0gkHGntD0dLVvira_fCSZxGR3QaZR5wgExIw8eFw">
-</div>
-<div class="flex items-center gap-2 mb-1">
-<span class="w-6 h-6 rounded-full bg-brand-green text-white text-xs font-bold flex items-center justify-center">1</span>
-<h3 class="font-bold text-stone-900 text-base">Connect</h3>
-</div>
-<p class="text-xs text-stone-600">Fits any standard hose.</p>
-</div>
-<!-- Step 2 -->
-<div class="flex flex-col items-center text-center">
-<div class="w-36 h-36 rounded-full overflow-hidden mb-5 border-4 border-white shadow-lg bg-stone-200 relative">
-<img width="800" height="800" alt="Step 2 Wash and lather pet" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3fb5o6oYkBTpoum3ZKfscQZwXJXvglvd7wS7-OwjOPMqmfj1YtN-g-2GCo4mM0BFrACQpSsY0MrEfRDWP64hUzDgisq7lo2mzrCAOhIc5DhfuhlsAyJt4ej0NMKwG-enx8HVm9QpwcCHoRuVki78Q1df__XZmGfdUwbJl0fsNm1zMCyIGOYZXoxfL0scopykhCPepgsCyOyYtdm_hljLqlaMYcrbT7qfyPHz88X0dyOcj2uvo1OVRYw">
-</div>
-<div class="flex items-center gap-2 mb-1">
-<span class="w-6 h-6 rounded-full bg-brand-green text-white text-xs font-bold flex items-center justify-center">2</span>
-<h3 class="font-bold text-stone-900 text-base">Wash</h3>
-</div>
-<p class="text-xs text-stone-600">Rinse and scrub with ease.</p>
-</div>
-<!-- Step 3 -->
-<div class="flex flex-col items-center text-center">
-<div class="w-36 h-36 rounded-full overflow-hidden mb-5 border-4 border-white shadow-lg bg-stone-200 relative">
-<img width="800" height="800" alt="Step 3 Happy clean dog" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-qu9z5Vt10Wt6hOr0kj7vsdytTcmVrBk8zvRtA7JbYu6d2YH5SP2xv_GlbnKMFfk6riTUrTnLJzP8vUEVZEztLV2mIsMVQXTdV6kWV7Nu6EZcChto1mz0NJps6nvnYbdC24yySsCROVGHExyogS2YEms2_cWmrbj7Gdwqad2WFIjsMeO9hkQy9ESfz-ExPQyvtBeuUatap5WXOvS6FdayQ4H-Zt7yQkF0wlYj8E7m7vrOB6axs4_ytw">
-</div>
-<div class="flex items-center gap-2 mb-1">
-<span class="w-6 h-6 rounded-full bg-brand-green text-white text-xs font-bold flex items-center justify-center">3</span>
-<h3 class="font-bold text-stone-900 text-base">Enjoy</h3>
-</div>
-<p class="text-xs text-stone-600">A cleaner, happier dog.</p>
-</div>
-</div>
+    <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+      
+      <!-- Header -->
+      <div class="lg:w-1/4 text-center lg:text-left shrink-0">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-dark tracking-tight mb-2">{{ section.settings.heading }}</h2>
+        <p class="text-base text-stone-600 font-medium">{{ section.settings.subheading }}</p>
+      </div>
+      
+      <!-- Steps Grid -->
+      <div class="lg:w-3/4 w-full">
+        <div class="!grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+          
+          <!-- Step 1 -->
+          <div class="flex flex-col items-start text-left">
+            <div class="w-full aspect-square rounded-full overflow-hidden mb-6 bg-stone-200 relative">
+              <img width="800" height="800" alt="Step 1 Connect Pawely sprayer" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAB-k9a1_cWAegs6gp4hTvPaK8p6RkfsuIe9kKWjbd4-02Wdi9UsmkGU_JVBT8kaU2nL-qp8963Hxkqyrbkjql6AyP0hkG43KuDIhDVs_nvO8LM3Zq-UxxxtIBazifTvg7J2KUfdV9BVAJj6JHhfvlJSVWOH6qGeAZ6AlncK8UyUcUR_ziOnm_ti7DJ7U9HEIdSiB9mD044Sga9zW0gkHGntD0dLVvira_fCSZxGR3QaZR5wgExIw8eFw">
+            </div>
+            <div class="flex flex-col items-start">
+              <div class="flex items-center gap-3 mb-1">
+                <span class="w-8 h-8 rounded-full bg-[#0A361A] text-white text-sm font-bold flex items-center justify-center shrink-0">1</span>
+                <h3 class="font-bold text-stone-900 text-lg">Connect</h3>
+              </div>
+              <p class="text-xs sm:text-sm text-stone-600 pl-11">Fits any standard hose.</p>
+            </div>
+          </div>
+          
+          <!-- Step 2 -->
+          <div class="flex flex-col items-start text-left">
+            <div class="w-full aspect-square rounded-full overflow-hidden mb-6 bg-stone-200 relative">
+              <img width="800" height="800" alt="Step 2 Wash and lather pet" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3fb5o6oYkBTpoum3ZKfscQZwXJXvglvd7wS7-OwjOPMqmfj1YtN-g-2GCo4mM0BFrACQpSsY0MrEfRDWP64hUzDgisq7lo2mzrCAOhIc5DhfuhlsAyJt4ej0NMKwG-enx8HVm9QpwcCHoRuVki78Q1df__XZmGfdUwbJl0fsNm1zMCyIGOYZXoxfL0scopykhCPepgsCyOyYtdm_hljLqlaMYcrbT7qfyPHz88X0dyOcj2uvo1OVRYw">
+            </div>
+            <div class="flex flex-col items-start">
+              <div class="flex items-center gap-3 mb-1">
+                <span class="w-8 h-8 rounded-full bg-[#0A361A] text-white text-sm font-bold flex items-center justify-center shrink-0">2</span>
+                <h3 class="font-bold text-stone-900 text-lg">Wash</h3>
+              </div>
+              <p class="text-xs sm:text-sm text-stone-600 pl-11">Rinse and scrub with ease.</p>
+            </div>
+          </div>
+          
+          <!-- Step 3 -->
+          <div class="flex flex-col items-start text-left">
+            <div class="w-full aspect-square rounded-full overflow-hidden mb-6 bg-stone-200 relative">
+              <img width="800" height="800" alt="Step 3 Happy clean dog" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-qu9z5Vt10Wt6hOr0kj7vsdytTcmVrBk8zvRtA7JbYu6d2YH5SP2xv_GlbnKMFfk6riTUrTnLJzP8vUEVZEztLV2mIsMVQXTdV6kWV7Nu6EZcChto1mz0NJps6nvnYbdC24yySsCROVGHExyogS2YEms2_cWmrbj7Gdwqad2WFIjsMeO9hkQy9ESfz-ExPQyvtBeuUatap5WXOvS6FdayQ4H-Zt7yQkF0wlYj8E7m7vrOB6axs4_ytw">
+            </div>
+            <div class="flex flex-col items-start">
+              <div class="flex items-center gap-3 mb-1">
+                <span class="w-8 h-8 rounded-full bg-[#0A361A] text-white text-sm font-bold flex items-center justify-center shrink-0">3</span>
+                <h3 class="font-bold text-stone-900 text-lg">Enjoy</h3>
+              </div>
+              <p class="text-xs sm:text-sm text-stone-600 pl-11">A cleaner, happier dog.</p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
 </div>
 </section>
 
