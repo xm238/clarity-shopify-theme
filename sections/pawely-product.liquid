@@ -114,14 +114,21 @@
       <div class="space-y-2.5 mb-6 pawely-actions">
         <style>
           .pawely-actions .shopify-payment-button__button {
-            border-radius: 0.75rem !important; /* rounded-xl */
-            min-height: 48px !important; /* py-3.5 equivalent */
-            font-weight: 700 !important; /* font-bold */
-            font-size: 0.875rem !important; /* text-sm */
+            border-radius: 0.75rem !important;
+            min-height: 48px !important;
+            font-weight: 700 !important;
+            font-size: 0.875rem !important;
             box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
+            background-color: #5A31F4 !important; /* Purple */
+            color: white !important;
+            width: 100% !important;
+          }
+          .pawely-actions .shopify-payment-button__button:hover {
+            opacity: 0.95 !important;
+            background-color: #5A31F4 !important;
           }
         </style>
-        <button name="add" class="w-full font-bold text-sm py-3.5 rounded-xl transition shadow flex items-center justify-center hover:opacity-90" type="submit" style="background-color: #16281E !important; color: white !important;" {% if featured_product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
+        <button name="add" class="w-full font-bold text-sm py-3.5 rounded-xl transition shadow flex items-center justify-center hover:opacity-90" type="submit" style="background-color: #2A5934 !important; color: white !important;" {% if featured_product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
           {% if featured_product.selected_or_first_available_variant.available %}
             Add to Cart
           {% else %}
@@ -144,7 +151,7 @@
     <span class="text-xs text-stone-500 font-medium">Quantity</span>
   </div>
   <div class="space-y-2.5 mb-6">
-    <button class="w-full font-bold text-sm py-3.5 rounded-xl transition shadow hover:opacity-90" type="button" style="background-color: #16281E !important; color: white !important;">
+    <button class="w-full font-bold text-sm py-3.5 rounded-xl transition shadow hover:opacity-90" type="button" style="background-color: #2A5934 !important; color: white !important;">
       Add to Cart
     </button>
     <button class="w-full font-bold text-sm py-3.5 rounded-xl transition flex items-center justify-center gap-1.5 shadow hover:opacity-90" type="button" style="background-color: #5A31F4 !important; color: white !important;">
