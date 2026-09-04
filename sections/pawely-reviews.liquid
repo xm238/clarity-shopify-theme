@@ -1,0 +1,259 @@
+{% comment %} pawely-reviews.liquid {% endcomment %}
+
+<style>
+  .pawely-reviews-section {
+    padding: 4rem 1.25rem;
+    background-color: #FBF9F5;
+    border-bottom: 1px solid #E7E5E4;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .pawely-reviews-inner {
+    max-width: 72rem;
+    margin: 0 auto;
+  }
+
+  .pawely-reviews-heading {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #1C1917;
+    text-align: center;
+    margin: 0 0 2.5rem 0;
+    line-height: 1.2;
+  }
+
+  .pawely-reviews-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .pawely-review-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid #E7E5E4;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .pawely-review-avatar-wrap {
+    flex-shrink: 0;
+  }
+
+  .pawely-review-avatar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 9999px;
+    object-fit: cover;
+    border: 1px solid #E7E5E4;
+    display: block;
+  }
+
+  .pawely-review-avatar-placeholder {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 9999px;
+    background-color: #2A5934;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.125rem;
+    font-weight: 700;
+    border: 1px solid #E7E5E4;
+    flex-shrink: 0;
+  }
+
+  .pawely-review-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .pawely-review-stars {
+    display: flex;
+    gap: 0.15rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .pawely-review-stars svg {
+    width: 1rem;
+    height: 1rem;
+    color: #F59E0B;
+    fill: #F59E0B;
+  }
+
+  .pawely-review-quote {
+    font-style: italic;
+    color: #44403C;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    margin: 0 0 0.6rem 0;
+  }
+
+  .pawely-review-author {
+    font-weight: 600;
+    color: #78716C;
+    font-size: 0.825rem;
+    margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    .pawely-reviews-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .pawely-reviews-heading {
+      font-size: 2.25rem;
+    }
+  }
+</style>
+
+<section class="pawely-reviews-section">
+  <div class="pawely-reviews-inner">
+
+    <h2 class="pawely-reviews-heading">{{ section.settings.heading | escape }}</h2>
+
+    <div class="pawely-reviews-grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'review' -%}
+          {%- assign rating = block.settings.rating | default: 5 -%}
+          <div class="pawely-review-card" {{ block.shopify_attributes }}>
+
+            {%- comment -%} Avatar {%- endcomment -%}
+            <div class="pawely-review-avatar-wrap">
+              {%- if block.settings.avatar_url != blank -%}
+                <img
+                  class="pawely-review-avatar"
+                  src="{{ block.settings.avatar_url }}"
+                  alt="{{ block.settings.author_name | escape }}"
+                  loading="lazy"
+                  width="48"
+                  height="48"
+                >
+              {%- else -%}
+                <div class="pawely-review-avatar-placeholder" aria-hidden="true">
+                  {{ block.settings.author_name | slice: 0 | upcase }}
+                </div>
+              {%- endif -%}
+            </div>
+
+            {%- comment -%} Body {%- endcomment -%}
+            <div class="pawely-review-body">
+
+              {%- comment -%} Stars {%- endcomment -%}
+              <div class="pawely-review-stars" aria-label="{{ rating }} out of 5 stars">
+                {%- for i in (1..5) -%}
+                  {%- if i <= rating -%}
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  {%- else -%}
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" style="color:#E7E5E4; fill:#E7E5E4;">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+
+              {%- comment -%} Quote {%- endcomment -%}
+              <p class="pawely-review-quote">"{{ block.settings.quote | escape }}"</p>
+
+              {%- comment -%} Author {%- endcomment -%}
+              <p class="pawely-review-author">— {{ block.settings.author_name | escape }}</p>
+
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Pawely Reviews",
+  "tag": "section",
+  "class": "pawely-reviews",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Real dogs. Real happy owners."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "text",
+          "id": "avatar_url",
+          "label": "Avatar image URL",
+          "info": "Paste an external image URL. Leave blank to show initials placeholder."
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author name",
+          "default": "Happy Owner"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Review quote",
+          "default": "My dog absolutely loves bath time now!"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Star rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pawely Reviews",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "avatar_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuBXlEeLbmyJlc3KaotkoQ7K6RIkgrjaUKRV7ubCsu6MwSfvlRvXL2Z1P2QXfvjwLLxltiii1lGx1ICwQipC-4GFmfdNXdzMsZm19g9PXqEpn2ylSkv6EFlzrl2ERWU3e25QEZ8PWSfWww1T4liajVOfzgt3S6tnhb4M0jcRIeIUdFVomebLCzH2fiQqBb35C_goiDmf5zu9MQzavrehyuwMRR_OevkhtzVmvb-v8B1IE4AjwE9rCxM9Ow",
+            "author_name": "Sarah M.",
+            "quote": "Max used to run away at bath time. Now he actually walks into the Pawely tub himself! The warm water and gentle spray made all the difference.",
+            "rating": 5
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "avatar_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuBEjgrQTU39AfdC1meiiZ6pn_z7WhmpT-zl0BtLRY7j1q5V8R57uuJwh_faYF9LgXVmn_CFZgycTiU6M7VaF3aJo0PY8o_d6_CqnSOKlTNdIdH2uLN_p4p8wFx8rdeq1LyNWJXLyOGMiV8zpirkVaD2Z65qZxlZmBo_E1DLzfVfp8wcZDyY-omzCw6MhiU68thRy0N3g9GDFMgWSnHlMDnoWXHolwGIMIzbwMFSpExOuL95R7VdvftpYw",
+            "author_name": "James T.",
+            "quote": "Finally something that works for my anxious golden retriever. The Pawely system is so calm and quiet — no scary noises or cold splashes.",
+            "rating": 5
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "avatar_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuC3Pw1ejXZXsCPmTm-HD5sUBNv3UQGw38-ZVwryhM9CYJ7V0_2C8pFOtl3WP55tm0gAFl3ZJ1xMTINpq5XEI5DkH_-jFPSR2ZrBn4aueOEyhEuelUcn_dgmPQhXFFaEESe3T1Fv7Tl0BbcZmRNx7GkKqDgkRPNqNf_eiiHFT_qRd0_1AogHhc6aYE0rvFGG5RwqYM7VPoPUWcGPLC9bAnzrHuX-xlVXZrRwOsvQ_pwftJgdb0xlsSDldw",
+            "author_name": "Linda K.",
+            "quote": "Cuts bath time in half and my husky actually looks forward to it. The detachable sprayer reaches everywhere — totally worth every penny.",
+            "rating": 5
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

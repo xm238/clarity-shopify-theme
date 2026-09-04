@@ -1,0 +1,383 @@
+<style>
+  .pawely-footer {
+    background-color: #FBF9F5;
+    color: #57534E;
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+    font-size: 0.75rem;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .pawely-footer__inner {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .pawely-footer__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid #E7E5E4;
+  }
+
+  .pawely-footer__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: #16281E;
+    font-size: 1.125rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+  }
+
+  .pawely-footer__logo:hover {
+    color: #2A5934;
+  }
+
+  .pawely-footer__logo svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #2A5934;
+    flex-shrink: 0;
+  }
+
+  .pawely-footer__tagline {
+    color: #78716C;
+    line-height: 1.6;
+    max-width: 22rem;
+    margin: 0;
+  }
+
+  .pawely-footer__col-title {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #44403C;
+    margin: 0 0 0.875rem 0;
+  }
+
+  .pawely-footer__nav {
+    list-style: none;
+    margin: 0 0 1.5rem 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .pawely-footer__nav a {
+    color: #57534E;
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .pawely-footer__nav a:hover {
+    color: #2A5934;
+  }
+
+  .pawely-footer__social {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    margin-top: 0.25rem;
+  }
+
+  .pawely-footer__social a {
+    color: #78716C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.15s ease, transform 0.15s ease;
+  }
+
+  .pawely-footer__social a:hover {
+    color: #2A5934;
+    transform: translateY(-1px);
+  }
+
+  .pawely-footer__social svg {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+
+  .pawely-footer__newsletter-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #292524;
+    margin: 0 0 0.25rem 0;
+  }
+
+  .pawely-footer__newsletter-sub {
+    color: #78716C;
+    margin: 0 0 1rem 0;
+    line-height: 1.5;
+  }
+
+  .pawely-footer__newsletter-form {
+    display: flex;
+    gap: 0;
+    border: 1px solid #D6D3D1;
+    border-radius: 0.625rem;
+    overflow: hidden;
+    background-color: #fff;
+  }
+
+  .pawely-footer__newsletter-input {
+    flex: 1;
+    padding: 0.625rem 0.75rem;
+    font-size: 0.75rem;
+    color: #292524;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .pawely-footer__newsletter-input::placeholder {
+    color: #A8A29E;
+  }
+
+  .pawely-footer__newsletter-btn {
+    padding: 0.625rem 1rem;
+    background-color: #2A5934;
+    color: #FBF9F5;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.15s ease;
+    line-height: 1;
+  }
+
+  .pawely-footer__newsletter-btn:hover {
+    background-color: #16281E;
+  }
+
+  .pawely-footer__newsletter-success {
+    color: #38A169;
+    font-weight: 600;
+    margin-top: 0.5rem;
+  }
+
+  .pawely-footer__newsletter-error {
+    color: #e53e3e;
+    margin-top: 0.5rem;
+  }
+
+  .pawely-footer__bottom {
+    padding-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .pawely-footer__copyright {
+    color: #A8A29E;
+  }
+
+  .pawely-footer__policies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .pawely-footer__policies a {
+    color: #A8A29E;
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .pawely-footer__policies a:hover {
+    color: #44403C;
+  }
+
+  @media (min-width: 768px) {
+    .pawely-footer__grid {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    .pawely-footer__col--brand {
+      grid-column: span 4;
+    }
+
+    .pawely-footer__col--links {
+      grid-column: span 4;
+    }
+
+    .pawely-footer__col--newsletter {
+      grid-column: span 4;
+    }
+
+    .pawely-footer__bottom {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+</style>
+
+<footer class="pawely-footer" role="contentinfo">
+  <div class="pawely-footer__inner">
+
+    <div class="pawely-footer__grid">
+
+      {%- comment -%} Brand column {%- endcomment -%}
+      <div class="pawely-footer__col--brand">
+        <a href="{{ routes.root_url }}" class="pawely-footer__logo" aria-label="Pawely - Home">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+            <circle cx="7" cy="8.5" r="2"/>
+            <circle cx="17" cy="8.5" r="2"/>
+            <circle cx="10.5" cy="5" r="2"/>
+            <circle cx="13.5" cy="5" r="2"/>
+            <path d="M12 11.5c-3.2 0-5.8 2.2-5.8 5 0 2.2 1.8 3.5 3.5 3.5 1.2 0 1.9-.6 2.3-.6.4 0 1.1.6 2.3.6 1.7 0 3.5-1.3 3.5-3.5 0-2.8-2.6-5-5.8-5z"/>
+          </svg>
+          Pawely
+        </a>
+        <p class="pawely-footer__tagline">{{ section.settings.tagline }}</p>
+      </div>
+
+      {%- comment -%} Links + Social column {%- endcomment -%}
+      <div class="pawely-footer__col--links">
+        <p class="pawely-footer__col-title">Navigate</p>
+        {%- if section.settings.nav_menu != blank -%}
+          <ul class="pawely-footer__nav">
+            {%- for link in linklists[section.settings.nav_menu].links -%}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        <div class="pawely-footer__social" role="list" aria-label="Social media links">
+          {%- if section.settings.instagram_url != blank -%}
+            <a href="{{ section.settings.instagram_url }}" aria-label="Instagram" role="listitem" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+          {%- endif -%}
+
+          {%- if section.settings.tiktok_url != blank -%}
+            <a href="{{ section.settings.tiktok_url }}" aria-label="TikTok" role="listitem" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+              </svg>
+            </a>
+          {%- endif -%}
+
+          {%- if section.settings.facebook_url != blank -%}
+            <a href="{{ section.settings.facebook_url }}" aria-label="Facebook" role="listitem" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 18 18" fill="currentColor" aria-hidden="true" focusable="false">
+                <path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.5 5H18V0h-3.808C10.595 0 9 1.582 9 4.615V8z"/>
+              </svg>
+            </a>
+          {%- endif -%}
+
+          {%- if section.settings.youtube_url != blank -%}
+            <a href="{{ section.settings.youtube_url }}" aria-label="YouTube" role="listitem" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- comment -%} Newsletter column {%- endcomment -%}
+      <div class="pawely-footer__col--newsletter">
+        <p class="pawely-footer__newsletter-label">Join our pack for special offers.</p>
+        <p class="pawely-footer__newsletter-sub">Get tips, deals, and new product news straight to your inbox.</p>
+
+        {%- form 'customer', id: 'pawely-newsletter-form' -%}
+          {%- if form.posted_successfully? -%}
+            <p class="pawely-footer__newsletter-success">Thanks for subscribing!</p>
+          {%- else -%}
+            {%- if form.errors -%}
+              <p class="pawely-footer__newsletter-error">{{ form.errors | default_errors }}</p>
+            {%- endif -%}
+            <div class="pawely-footer__newsletter-form">
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <input
+                class="pawely-footer__newsletter-input"
+                type="email"
+                name="contact[email]"
+                id="pawely-newsletter-email"
+                placeholder="Your email"
+                required
+                autocomplete="email"
+                aria-label="Email address for newsletter"
+              >
+              <button type="submit" class="pawely-footer__newsletter-btn" aria-label="Subscribe">&#8594;</button>
+            </div>
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+
+    </div>
+
+    {%- comment -%} Bottom bar {%- endcomment -%}
+    <div class="pawely-footer__bottom">
+      <p class="pawely-footer__copyright">{{ section.settings.copyright_text }}</p>
+      <ul class="pawely-footer__policies">
+        <li><a href="{{ routes.root_url }}policies/privacy-policy">Privacy Policy</a></li>
+        <li><a href="{{ routes.root_url }}policies/terms-of-service">Terms</a></li>
+        <li><a href="{{ routes.root_url }}policies/shipping-policy">Shipping</a></li>
+        <li><a href="{{ routes.root_url }}policies/refund-policy">Returns</a></li>
+      </ul>
+    </div>
+
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Pawely Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Small moments. A cleaner, happier tomorrow."
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright Text",
+      "default": "© 2024 Pawely. All rights reserved."
+    },
+    {
+      "type": "link_list",
+      "id": "nav_menu",
+      "label": "Footer Navigation",
+      "default": "footer"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "url",
+      "id": "tiktok_url",
+      "label": "TikTok URL"
+    },
+    {
+      "type": "url",
+      "id": "facebook_url",
+      "label": "Facebook URL"
+    },
+    {
+      "type": "url",
+      "id": "youtube_url",
+      "label": "YouTube URL"
+    }
+  ]
+}
+{% endschema %}

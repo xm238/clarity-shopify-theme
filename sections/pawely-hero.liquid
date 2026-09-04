@@ -1,0 +1,360 @@
+{% stylesheet %}
+  :root {
+    --p-cream: #FBF9F5;
+    --p-dark: #16281E;
+    --p-green: #2A5934;
+    --p-accent: #38A169;
+    --p-stone-50: #FAFAF9;
+    --p-stone-100: #F5F5F4;
+    --p-stone-200: #E7E5E4;
+    --p-stone-400: #A8A29E;
+    --p-stone-500: #78716C;
+    --p-stone-600: #57534E;
+    --p-stone-700: #44403C;
+    --p-stone-800: #292524;
+    --p-stone-900: #1C1917;
+  }
+
+  .pawely-hero {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--p-cream);
+    padding-top: 2.5rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid rgba(231, 229, 228, 0.5);
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .pawely-hero__inner {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .pawely-hero__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .pawely-hero__eyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--p-accent);
+    background-color: rgba(56, 161, 105, 0.1);
+    border: 1px solid rgba(56, 161, 105, 0.25);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    margin-bottom: 1rem;
+  }
+
+  .pawely-hero__heading {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--p-dark);
+    margin: 0 0 1.25rem;
+    letter-spacing: -0.02em;
+  }
+
+  .pawely-hero__description {
+    font-size: 1.0625rem;
+    color: var(--p-stone-600);
+    line-height: 1.65;
+    max-width: 30rem;
+    margin: 0 0 2rem;
+  }
+
+  .pawely-hero__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    background-color: var(--p-dark);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: 9999px;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+    margin-bottom: 2rem;
+  }
+
+  .pawely-hero__cta:hover {
+    background-color: var(--p-green);
+    transform: translateY(-1px);
+  }
+
+  .pawely-hero__value-props {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .pawely-hero__value-prop {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.375rem;
+  }
+
+  .pawely-hero__prop-icon {
+    width: 2rem;
+    height: 2rem;
+    background-color: rgba(42, 89, 52, 0.08);
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .pawely-hero__prop-icon svg {
+    width: 1rem;
+    height: 1rem;
+    color: var(--p-green);
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .pawely-hero__prop-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--p-stone-700);
+  }
+
+  .pawely-hero__image-col {
+    position: relative;
+  }
+
+  .pawely-hero__image-card {
+    position: relative;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(22, 40, 30, 0.18);
+    aspect-ratio: 1 / 1;
+    background-color: var(--p-stone-100);
+  }
+
+  .pawely-hero__image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .pawely-hero__handwritten {
+    position: absolute;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    background-color: rgba(251, 249, 245, 0.9);
+    backdrop-filter: blur(6px);
+    border-radius: 0.75rem;
+    padding: 0.625rem 0.875rem;
+    font-family: 'Caveat', cursive;
+    font-size: 1.3rem;
+    line-height: 1.35;
+    color: var(--p-dark);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    text-align: center;
+    pointer-events: none;
+  }
+
+  @media screen and (min-width: 640px) {
+    .pawely-hero__inner {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .pawely-hero {
+      padding-top: 4rem;
+      padding-bottom: 6rem;
+    }
+
+    .pawely-hero__inner {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    .pawely-hero__grid {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 3rem;
+    }
+
+    .pawely-hero__content-col {
+      grid-column: span 6;
+    }
+
+    .pawely-hero__image-col {
+      grid-column: span 6;
+    }
+
+    .pawely-hero__heading {
+      font-size: 3.25rem;
+    }
+
+    .pawely-hero__image-card {
+      aspect-ratio: 4 / 3;
+    }
+  }
+{% endstylesheet %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<section class="pawely-hero" id="pawely-hero-{{ section.id }}">
+  <div class="pawely-hero__inner">
+    <div class="pawely-hero__grid">
+
+      <!-- Left: Content -->
+      <div class="pawely-hero__content-col">
+        {% if section.settings.eyebrow != blank %}
+          <span class="pawely-hero__eyebrow">{{ section.settings.eyebrow }}</span>
+        {% endif %}
+
+        <h1 class="pawely-hero__heading">{{ section.settings.heading | newline_to_br }}</h1>
+
+        {% if section.settings.description != blank %}
+          <p class="pawely-hero__description">{{ section.settings.description }}</p>
+        {% endif %}
+
+        {% if section.settings.cta_label != blank %}
+          <a href="{{ section.settings.cta_link }}" class="pawely-hero__cta">
+            {{ section.settings.cta_label }}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        {% endif %}
+
+        <!-- Value Props -->
+        <div class="pawely-hero__value-props">
+          <div class="pawely-hero__value-prop">
+            <div class="pawely-hero__prop-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="var(--p-green)" fill="none" stroke-width="0"/>
+                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" stroke="var(--p-green)" stroke-width="1.75" fill="none"/>
+              </svg>
+            </div>
+            <span class="pawely-hero__prop-label">Easy to Use</span>
+          </div>
+          <div class="pawely-hero__value-prop">
+            <div class="pawely-hero__prop-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="var(--p-green)" stroke-width="1.75" fill="none"/>
+              </svg>
+            </div>
+            <span class="pawely-hero__prop-label">Gentle &amp; Safe</span>
+          </div>
+          <div class="pawely-hero__value-prop">
+            <div class="pawely-hero__prop-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 12H19M12 5l7 7-7 7M19 12H5" stroke="var(--p-green)" stroke-width="1.75" fill="none"/>
+                <path d="M3 12h2M19 12h2" stroke="var(--p-green)" stroke-width="1.75" fill="none"/>
+                <path d="M3 12c0-5 4-9 9-9M21 12c0 5-4 9-9 9" stroke="var(--p-green)" stroke-width="1.75" fill="none"/>
+              </svg>
+            </div>
+            <span class="pawely-hero__prop-label">Worldwide Shipping</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Image -->
+      <div class="pawely-hero__image-col">
+        <div class="pawely-hero__image-card">
+          {% if section.settings.hero_image != blank %}
+            {{ section.settings.hero_image | image_url: width: 900 | image_tag:
+              alt: section.settings.hero_image.alt,
+              loading: 'eager',
+              width: section.settings.hero_image.width,
+              height: section.settings.hero_image.height
+            }}
+          {% else %}
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB3fSZLyYNuEkr-pEF6FDToCWiCojaXQbfSsAy6Mxmq1mh-jBAEezqS3BQA84QwGEwjt-h8prHylNerjnz8TXYb7QUtcZpwtcoVduEOZOdCkzdOYRdCNN3qI9P3_MtgvP5-m6liMplv6Apz2qgsrrrd-3Fz50XTAaK1WSPvMFWmAbCEY62HYxxgZF9De8hrJHRGPvqY1F8kRTNPbErgvHBZJN0B8CLpMz1QveFHqAZ2VtDxxJxqohBXA"
+              alt="Happy Golden Retriever getting washed"
+              loading="eager"
+              width="900"
+              height="675"
+            >
+          {% endif %}
+
+          {% if section.settings.handwritten_tagline != blank %}
+            <div class="pawely-hero__handwritten" aria-hidden="true">
+              {{ section.settings.handwritten_tagline | newline_to_br }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Pawely Hero",
+  "tag": "div",
+  "class": "pawely-hero-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Bath Time, Made Easier"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading (use newline for line break)",
+      "default": "A cleaner dog.\nA happier you."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Rinse, scrub, and wash your dog in one simple tool. Turns any garden hose into a powerful pet shower."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA Button Label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "textarea",
+      "id": "handwritten_tagline",
+      "label": "Handwritten Tagline (overlay on image)",
+      "default": "Happy dogs\ncleaner days ♡"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pawely Hero"
+    }
+  ]
+}
+{% endschema %}
