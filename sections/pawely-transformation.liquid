@@ -1,275 +1,70 @@
-{% comment %} pawely-transformation.liquid {% endcomment %}
-
-<style>
-  :root {
-    --p-cream: #FBF9F5;
-    --p-dark: #16281E;
-    --p-green: #2A5934;
-    --p-accent: #38A169;
-    --p-stone-200: #E7E5E4;
-    --p-stone-400: #A8A29E;
-    --p-stone-500: #78716C;
-    --p-stone-600: #57534E;
-    --p-stone-700: #44403C;
-    --p-stone-900: #1C1917;
-  }
-
-  .pawely-transform-section {
-    padding: 3.5rem 1.25rem;
-    background: linear-gradient(to right, #1C1917, #16281E, #1C1917);
-    color: #ffffff;
-    font-family: 'Inter', system-ui, sans-serif;
-  }
-
-  .pawely-transform-inner {
-    max-width: 72rem;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    align-items: center;
-    text-align: center;
-  }
-
-  .pawely-transform-caption-left,
-  .pawely-transform-caption-right {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .pawely-transform-caption-left h2,
-  .pawely-transform-caption-right h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin: 0;
-    line-height: 1.2;
-  }
-
-  .pawely-transform-caption-left p,
-  .pawely-transform-caption-right p {
-    font-size: 0.9rem;
-    color: var(--p-stone-400);
-    margin: 0;
-    line-height: 1.5;
-  }
-
-  .pawely-transform-cards {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .pawely-transform-card {
-    position: relative;
-    width: 14rem;
-    height: 16rem;
-    border-radius: 1rem;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-
-  .pawely-transform-card--before {
-    border: 2px solid rgba(68, 64, 60, 1);
-  }
-
-  .pawely-transform-card--after {
-    border: 2px solid rgba(56, 161, 105, 0.5);
-  }
-
-  .pawely-transform-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .pawely-transform-badge {
-    position: absolute;
-    top: 0.5rem;
-    padding: 0.2rem 0.6rem;
-    border-radius: 9999px;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    color: #ffffff;
-  }
-
-  .pawely-transform-badge--before {
-    left: 0.5rem;
-    background-color: var(--p-green);
-  }
-
-  .pawely-transform-badge--after {
-    right: 0.5rem;
-    background-color: var(--p-accent);
-  }
-
-  .pawely-transform-arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .pawely-transform-arrow svg {
-    width: 2rem;
-    height: 2rem;
-    color: var(--p-accent);
-    transform: rotate(90deg);
-    transition: transform 0.2s;
-  }
-
-  @media (min-width: 1024px) {
-    .pawely-transform-section {
-      padding: 4rem 2rem;
-    }
-
-    .pawely-transform-inner {
-      grid-template-columns: 3fr 6fr 3fr;
-      text-align: left;
-    }
-
-    .pawely-transform-caption-right {
-      text-align: right;
-    }
-
-    .pawely-transform-arrow svg {
-      transform: rotate(0deg);
-    }
-  }
-</style>
-
-<section class="pawely-transform-section" aria-label="{{ section.settings.left_heading | escape }}">
-  <div class="pawely-transform-inner">
-
-    {%- comment -%} Left caption {%- endcomment -%}
-    <div class="pawely-transform-caption-left">
-      <h2>{{ section.settings.left_heading | escape }}</h2>
-      <p>{{ section.settings.left_subtext | escape }}</p>
-    </div>
-
-    {%- comment -%} Center: before + arrow + after {%- endcomment -%}
-    <div class="pawely-transform-cards">
-
-      {%- comment -%} Before card {%- endcomment -%}
-      <div class="pawely-transform-card pawely-transform-card--before">
-        {%- if section.settings.before_image != blank -%}
-          {{ section.settings.before_image | image_url: width: 320 | image_tag:
-            loading: 'lazy',
-            alt: section.settings.before_label | escape,
-            width: 224,
-            height: 256
-          }}
-        {%- else -%}
-          <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuALvnr4PTZRAuP3DUhU6cRaHn1bs0UNHveGwQXi6dTu8m1OfmYkixzui1sey1pNhzZJ2skf0hy-fXk1fXSh-g0pWI_d6JCwtojJrCqr5BpH7Mx_iiaqBagGwGwByqj_rxUcWDVlk7KFNW5b1UmH5kerbcnRA8pf2hXgUEbtdNnI_lk5Mhx0-PLGpq4DkOyThhr6GSLsOC2v3S5IYuZES0S9IGNle8xe1kU2bIpg0pJtf1OnBis4gPEhEw"
-            alt="{{ section.settings.before_label | escape }}"
-            loading="lazy"
-            width="224"
-            height="256"
-          >
-        {%- endif -%}
-        <span class="pawely-transform-badge pawely-transform-badge--before" aria-hidden="true">
-          {{ section.settings.before_label | escape }}
-        </span>
-      </div>
-
-      {%- comment -%} Arrow {%- endcomment -%}
-      <div class="pawely-transform-arrow" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="color: var(--p-accent);">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-        </svg>
-      </div>
-
-      {%- comment -%} After card {%- endcomment -%}
-      <div class="pawely-transform-card pawely-transform-card--after">
-        {%- if section.settings.after_image != blank -%}
-          {{ section.settings.after_image | image_url: width: 320 | image_tag:
-            loading: 'lazy',
-            alt: section.settings.after_label | escape,
-            width: 224,
-            height: 256
-          }}
-        {%- else -%}
-          <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4EXx5GTMgRb_p4n3TY5uWxalI4k8P-ZSjpyYLEWuVPDen3k7WOy1a-Ql5gCocnW402t4n7sxUp8unmPC7lfRw0SxwhoMFalz-BX2QYJ_edb-H6mAxfRDKlBmPtGcE56xcOAvQCCUyFL_spoClbyNEAB8kUzIxc5q5se1YhdloR5A-_y_5KTal540UKw5k-8PjfMjDM2eqNqETvctjLDoTvdh5Bt0b6wRo5ELr2UmQ1BunnKDfBm07og"
-            alt="{{ section.settings.after_label | escape }}"
-            loading="lazy"
-            width="224"
-            height="256"
-          >
-        {%- endif -%}
-        <span class="pawely-transform-badge pawely-transform-badge--after" aria-hidden="true">
-          {{ section.settings.after_label | escape }}
-        </span>
-      </div>
-
-    </div>
-
-    {%- comment -%} Right caption {%- endcomment -%}
-    <div class="pawely-transform-caption-right">
-      <h2>{{ section.settings.right_heading | escape }}</h2>
-      <p>{{ section.settings.right_subtext | escape }}</p>
-    </div>
-
-  </div>
+<section class="py-14 sm:py-16 bg-gradient-to-r from-stone-900 via-brand-dark to-stone-900 text-white overflow-hidden relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<!-- Left Caption -->
+<div class="lg:col-span-3 text-center lg:text-left">
+<h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-2">{{ section.settings.left_heading }}</h3>
+<p class="text-stone-400 text-xs sm:text-sm">{{ section.settings.left_subtext }}</p>
+</div>
+<!-- Center Before / After Comparison -->
+<div class="lg:col-span-6 flex flex-col sm:flex-row items-center justify-center gap-4 relative">
+<!-- Before Card -->
+<div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-stone-700 w-56 h-64 flex-shrink-0">
+<img alt="Muddy dog before wash" class="w-full h-full object-cover filter contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALvnr4PTZRAuP3DUhU6cRaHn1bs0UNHveGwQXi6dTu8m1OfmYkixzui1sey1pNhzZJ2skf0hy-fXk1fXSh-g0pWI_d6JCwtojJrCqr5BpH7Mx_iiaqBagGwGwByqj_rxUcWDVlk7KFNW5b1UmH5kerbcnRA8pf2hXgUEbtdNnI_lk5Mhx0-PLGpq4DkOyThhr6GSLsOC2v3S5IYuZES0S9IGNle8xe1kU2bIpg0pJtf1OnBis4gPEhEw">
+<span class="absolute top-3 left-3 bg-brand-green/90 backdrop-blur-xs text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded">
+                BEFORE
+              </span>
+</div>
+<!-- Green Transition Arrow -->
+<div class="flex items-center justify-center text-brand-accent transform rotate-90 sm:rotate-0 my-2 sm:my-0">
+<svg class="w-10 h-10 filter drop-shadow" fill="currentColor" viewBox="0 0 24 24">
+<path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+</svg>
+</div>
+<!-- After Card -->
+<div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-brand-accent/50 w-56 h-64 flex-shrink-0">
+<img alt="Clean fluffy dog after wash" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4EXx5GTMgRb_p4n3TY5uWxalI4k8P-ZSjpyYLEWuVPDen3k7WOy1a-Ql5gCocnW402t4n7sxUp8unmPC7lfRw0SxwhoMFalz-BX2QYJ_edb-H6mAxfRDKlBmPtGcE56xcOAvQCCUyFL_spoClbyNEAB8kUzIxc5q5se1YhdloR5A-_y_5KTal540UKw5k-8PjfMjDM2eqNqETvctjLDoTvdh5Bt0b6wRo5ELr2UmQ1BunnKDfBm07og">
+<span class="absolute top-3 right-3 bg-brand-accent text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded shadow">
+                AFTER
+              </span>
+</div>
+</div>
+<!-- Right Caption -->
+<div class="lg:col-span-3 text-center lg:text-right">
+<h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-2">{{ section.settings.right_heading }}</h3>
+<p class="text-stone-400 text-xs sm:text-sm">{{ section.settings.right_subtext }}</p>
+</div>
+</div>
+</div>
 </section>
 
 {% schema %}
 {
   "name": "Pawely Transformation",
-  "tag": "section",
-  "class": "pawely-transformation",
   "settings": [
     {
       "type": "text",
       "id": "left_heading",
-      "label": "Left heading",
+      "label": "Left Heading",
       "default": "From muddy..."
     },
     {
       "type": "text",
       "id": "left_subtext",
-      "label": "Left subtext",
-      "default": "Every pup deserves a clean start after adventures outside."
+      "label": "Left Subtext",
+      "default": "Muddy paws and messy park runs handled in seconds."
     },
     {
       "type": "text",
       "id": "right_heading",
-      "label": "Right heading",
+      "label": "Right Heading",
       "default": "...to magnificent."
     },
     {
       "type": "text",
       "id": "right_subtext",
-      "label": "Right subtext",
-      "default": "Fluffy, fresh, and ready for cuddles — in minutes."
-    },
-    {
-      "type": "image_picker",
-      "id": "before_image",
-      "label": "Before image"
-    },
-    {
-      "type": "image_picker",
-      "id": "after_image",
-      "label": "After image"
-    },
-    {
-      "type": "text",
-      "id": "before_label",
-      "label": "Before badge label",
-      "default": "BEFORE"
-    },
-    {
-      "type": "text",
-      "id": "after_label",
-      "label": "After badge label",
-      "default": "AFTER"
+      "label": "Right Subtext",
+      "default": "The same dog. A whole new vibe."
     }
   ],
   "presets": [
