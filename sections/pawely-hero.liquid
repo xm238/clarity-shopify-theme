@@ -1,63 +1,64 @@
-{% assign bg_image_url = "https://lh3.googleusercontent.com/aida-public/AB6AXuDB3fSZLyYNuEkr-pEF6FDToCWiCojaXQbfSsAy6Mxmq1mh-jBAEezqS3BQA84QwGEwjt-h8prHylNerjnz8TXYb7QUtcZpwtcoVduEOZOdCkzdOYRdCNN3qI9P3_MtgvP5-m6liMplv6Apz2qgsrrrd-3Fz50XTAaK1WSPvMFWmAbCEY62HYxxgZF9De8hrJHRGPvqY1F8kRTNPbErgvHBZJN0B8CLpMz1QveFHqAZ2VtDxxJxqohBXA" %}
+<section class="relative overflow-hidden bg-brand-cream pt-10 pb-16 lg:pt-16 lg:pb-24 border-b border-stone-200/50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="!grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<!-- Left Hero Content -->
+<div class="lg:col-span-6 z-10">
+<span class="inline-block text-xs font-bold tracking-widest text-stone-600 uppercase mb-3">
+              {{ section.settings.eyebrow }}
+            </span>
+<h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-brand-dark tracking-tight leading-[1.08] mb-5">
+              {{ section.settings.heading }}
+            </h1>
+<p class="text-base sm:text-lg text-stone-600 max-w-md mb-8 leading-relaxed">
+              {{ section.settings.description }}
+            </p>
+<!-- Hero CTA Button -->
+<div class="mb-10">
+<a class="inline-flex items-center justify-center gap-2 font-semibold text-sm px-7 py-3.5 rounded-full transition duration-200 shadow-md hover:opacity-90" style="background-color: #16281E !important; color: white !important;" href="{{ section.settings.cta_link }}">
+<span class="">{{ section.settings.cta_label }}</span>
+<span class="text-base font-bold">→</span>
+</a>
+</div>
+<!-- Value Props List -->
+<div class="!grid grid-cols-3 gap-4 pt-4 border-t border-stone-200/70 max-w-lg">
+<div class="flex flex-col items-center sm:items-start text-center sm:text-left">
+<svg class="w-6 h-6 text-stone-800 mb-2" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+<path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-xs font-semibold text-stone-800 leading-tight">Easy to Use</span>
+</div>
+<div class="flex flex-col items-center sm:items-start text-center sm:text-left">
+<svg class="w-6 h-6 text-stone-800 mb-2" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-xs font-semibold text-stone-800 leading-tight">Gentle &amp; Safe</span>
+</div>
+<div class="flex flex-col items-center sm:items-start text-center sm:text-left">
+<svg class="w-6 h-6 text-stone-800 mb-2" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+<path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-xs font-semibold text-stone-800 leading-tight">Worldwide<br>Shipping</span>
+</div>
+</div>
+</div>
+<!-- Right Hero Image Showcase -->
+<div class="lg:col-span-6 relative mt-4 lg:mt-0 flex justify-center items-center">
+<div class="relative w-full max-w-lg aspect-square lg:aspect-[4/3] rounded-3xl overflow-hidden shadow-xl bg-stone-100">
 {% if section.settings.hero_image != blank %}
-  {% assign bg_image_url = section.settings.hero_image | image_url: width: 2400 %}
+  <img width="800" height="800" alt="Happy Golden Retriever getting washed outdoors with fresh water spray" class="w-full h-full object-cover" src="{{ section.settings.hero_image | image_url: width: 1200 }}">
+{% else %}
+  <img width="800" height="800" alt="Happy Golden Retriever getting washed outdoors with fresh water spray" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB3fSZLyYNuEkr-pEF6FDToCWiCojaXQbfSsAy6Mxmq1mh-jBAEezqS3BQA84QwGEwjt-h8prHylNerjnz8TXYb7QUtcZpwtcoVduEOZOdCkzdOYRdCNN3qI9P3_MtgvP5-m6liMplv6Apz2qgsrrrd-3Fz50XTAaK1WSPvMFWmAbCEY62HYxxgZF9De8hrJHRGPvqY1F8kRTNPbErgvHBZJN0B8CLpMz1QveFHqAZ2VtDxxJxqohBXA">
 {% endif %}
-<section class="relative overflow-hidden pt-32 pb-16 lg:pt-40 lg:pb-24 min-h-[600px] lg:min-h-[750px] flex items-center bg-brand-cream border-b border-stone-200/50">
-  <!-- Background Image -->
-  <div class="absolute inset-0 z-0">
-    <img src="{{ bg_image_url }}" alt="Hero Background" class="w-full h-full object-cover object-center lg:object-right">
-  </div>
-  <!-- Gradient Overlay for readability -->
-  <div class="absolute inset-0 z-0 bg-gradient-to-r from-brand-cream via-brand-cream/80 to-transparent"></div>
-  
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-    <div class="max-w-xl">
-      <span class="inline-block text-xs font-bold tracking-widest text-stone-600 uppercase mb-3">
-        {{ section.settings.eyebrow }}
-      </span>
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-brand-dark tracking-tight leading-[1.08] mb-5">
-        {{ section.settings.heading }}
-      </h1>
-      <p class="text-base sm:text-lg text-stone-700 max-w-md mb-8 leading-relaxed font-medium">
-        {{ section.settings.description }}
-      </p>
-      
-      <!-- Hero CTA Button -->
-      <div class="mb-10">
-        <a class="inline-flex items-center justify-center gap-2 font-semibold text-sm px-7 py-3.5 rounded-full transition duration-200 shadow-md hover:opacity-90" style="background-color: #16281E !important; color: white !important;" href="{{ section.settings.cta_link }}">
-          <span class="">{{ section.settings.cta_label }}</span>
-          <span class="text-base font-bold">→</span>
-        </a>
-      </div>
-      
-      <!-- Value Props List -->
-      <div class="flex items-center gap-6 pt-6">
-        <div class="flex flex-col items-center text-center">
-          <svg class="w-5 h-5 text-stone-800 mb-1.5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
-            <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-          <span class="text-[11px] font-semibold text-stone-800 leading-tight">Easy to Use</span>
-        </div>
-        <div class="flex flex-col items-center text-center">
-          <svg class="w-5 h-5 text-stone-800 mb-1.5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
-            <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-          <span class="text-[11px] font-semibold text-stone-800 leading-tight">Gentle &amp; Safe</span>
-        </div>
-        <div class="flex flex-col items-center text-center">
-          <svg class="w-5 h-5 text-stone-800 mb-1.5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
-            <path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-          <span class="text-[11px] font-semibold text-stone-800 leading-tight">Worldwide<br>Shipping</span>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Handwritten Script Tag on right side of image -->
-    <div class="absolute bottom-10 right-4 lg:bottom-32 lg:right-12 text-white text-right drop-shadow-md select-none hidden sm:block">
-      <p class="font-handwriting text-3xl sm:text-4xl leading-tight">Happy dogs<br>cleaner days ♡</p>
-    </div>
-  </div>
+<!-- Subtle spray effect overlay -->
+<div class="absolute inset-0 bg-gradient-to-tr from-brand-cream/30 via-transparent to-transparent pointer-events-none"></div>
+<!-- Handwritten Script Tag -->
+<div class="absolute bottom-6 right-6 text-white text-right drop-shadow-md select-none">
+<p class="font-handwriting text-2xl sm:text-3xl leading-tight">Happy dogs<br>cleaner days ♡</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 
 {% schema %}
