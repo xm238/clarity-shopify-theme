@@ -17,6 +17,7 @@
       <div class="product-intro__media-column">
         <div class="product-intro__media-card">
           {% if section.settings.image != blank %}
+            {% assign intro_img_alt = section.settings.image.alt | default: section.settings.heading %}
             {{
               section.settings.image
               | image_url: width: 1200
@@ -24,7 +25,7 @@
                 loading: 'lazy',
                 widths: '375, 550, 750, 1100, 1200',
                 class: 'product-intro__image',
-                alt: section.settings.image.alt | default: section.settings.heading | escape
+                alt: intro_img_alt
             }}
           {% else %}
             <div class="product-intro__placeholder">
@@ -108,8 +109,10 @@
     grid-template-columns: 1fr;
     gap: 2.5rem;
     align-items: center;
+  }
 
-    @media screen and (min-width: 990px) {
+  @media screen and (min-width: 990px) {
+    .product-intro__wrapper {
       grid-template-columns: 1fr 1.15fr;
       gap: 4rem;
     }
@@ -182,8 +185,10 @@
     gap: 1.25rem;
     width: 100%;
     margin-block-end: 2rem;
+  }
 
-    @media screen and (min-width: 600px) {
+  @media screen and (min-width: 600px) {
+    .product-intro__features-grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
     }

@@ -39,6 +39,7 @@
 
           {% if section.settings.before_image != blank %}
             {% assign before_focal = section.settings.before_image.presentation.focal_point %}
+            {% assign before_alt = section.settings.before_alt | default: section.settings.before_label | default: 'Before grooming' %}
             {{
               section.settings.before_image
               | image_url: width: 1200
@@ -47,7 +48,7 @@
                 widths: '375, 550, 750, 1100, 1200',
                 class: 'before-after__image',
                 style: before_focal != blank ? 'object-position: ' | append: before_focal : '',
-                alt: section.settings.before_alt | default: section.settings.before_label | default: 'Before grooming' | escape
+                alt: before_alt
             }}
           {% else %}
             <div class="before-after__placeholder">
@@ -83,6 +84,7 @@
 
           {% if section.settings.after_image != blank %}
             {% assign after_focal = section.settings.after_image.presentation.focal_point %}
+            {% assign after_alt = section.settings.after_alt | default: section.settings.after_label | default: 'After grooming' %}
             {{
               section.settings.after_image
               | image_url: width: 1200
@@ -91,7 +93,7 @@
                 widths: '375, 550, 750, 1100, 1200',
                 class: 'before-after__image',
                 style: after_focal != blank ? 'object-position: ' | append: after_focal : '',
-                alt: section.settings.after_alt | default: section.settings.after_label | default: 'After grooming' | escape
+                alt: after_alt
             }}
           {% else %}
             <div class="before-after__placeholder">
@@ -144,8 +146,10 @@
     grid-template-columns: 1fr;
     gap: 1.5rem;
     align-items: center;
+  }
 
-    @media screen and (min-width: 840px) {
+  @media screen and (min-width: 840px) {
+    .before-after__comparison-grid {
       grid-template-columns: 1fr auto 1fr;
       gap: 2rem;
     }
@@ -255,8 +259,10 @@
 
   .before-after__arrow-icon {
     transform: rotate(90deg);
+  }
 
-    @media screen and (min-width: 840px) {
+  @media screen and (min-width: 840px) {
+    .before-after__arrow-icon {
       transform: rotate(0deg);
     }
   }

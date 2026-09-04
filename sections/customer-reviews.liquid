@@ -25,16 +25,7 @@
       {% endif %}
     </div>
 
-    {% comment %} Review App Integration Hook (@app blocks) {% endcomment %}
-    {% capture app_blocks %}
-      {% content_for 'blocks' %}
-    {% endcapture %}
-
-    {% if app_blocks != blank %}
-      <div class="customer-reviews__app-wrapper">
-        {{ app_blocks }}
-      </div>
-    {% endif %}
+    {% comment %} Review app blocks are surfaced via section.blocks below {% endcomment %}
 
     {% comment %} Testimonial Cards Row {% endcomment %}
     {% if section.blocks.size > 0 %}
@@ -61,13 +52,14 @@
               {% comment %} Customer Details & Avatar Footer {% endcomment %}
               <footer class="customer-reviews__footer">
                 {% if block.settings.avatar != blank %}
+                  {% assign avatar_alt = block.settings.author | default: 'Customer' %}
                   {{
                     block.settings.avatar
                     | image_url: width: 120
                     | image_tag:
                       loading: 'lazy',
                       class: 'customer-reviews__avatar',
-                      alt: block.settings.author | default: 'Customer' | escape
+                      alt: avatar_alt
                   }}
                 {% else %}
                   <div class="customer-reviews__avatar-placeholder">
@@ -129,8 +121,10 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.75rem;
+  }
 
-    @media screen and (min-width: 750px) {
+  @media screen and (min-width: 750px) {
+    .customer-reviews__grid {
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
     }
@@ -281,9 +275,6 @@
     }
   ],
   "blocks": [
-    {
-      "type": "@app"
-    },
     {
       "type": "testimonial",
       "name": "Testimonial Card",
