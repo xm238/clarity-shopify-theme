@@ -1,1 +1,26 @@
-{"type":"footer","name":"Footer","sections":{"pawely_footer":{"type":"pawely-footer","settings":{"tagline":"Small moments. A cleaner, happier tomorrow.","copyright_text":"© 2024 Pawely. All rights reserved."}}},"order":["pawely_footer"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "pawely_footer": {
+      "type": "pawely-footer",
+      "settings": {
+        "brand_name": "PawJet™",
+        "tagline": "Small moments. A cleaner, happier tomorrow.",
+        "copyright_text": "© 2026 PawJet™. All rights reserved."
+      }
+    }
+  },
+  "order": [
+    "pawely_footer"
+  ]
+}

@@ -1,1 +1,82 @@
-{"sections":{"pawely_hero":{"type":"pawely-hero","settings":{}},"pawely_features":{"type":"pawely-features","settings":{}},"pawely_how_it_works":{"type":"pawely-how-it-works","settings":{}},"pawely_transformation":{"type":"pawely-transformation","settings":{}},"pawely_reviews":{"type":"pawely-reviews","settings":{}},"pawely_faq":{"type":"pawely-faq","settings":{}},"pawely_product":{"type":"pawely-product","settings":{}}},"order":["pawely_hero","pawely_features","pawely_how_it_works","pawely_transformation","pawely_reviews","pawely_faq","pawely_product"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pawely_hero_LkfNBq": {
+      "type": "pawely-hero",
+      "name": "Pawely Hero",
+      "settings": {
+        "eyebrow": "Bath Time, Made Easier",
+        "heading": "A cleaner dog.<br>A happier you.",
+        "description": "Rinse, scrub, and wash your dog in one simple tool. Turns any garden hose into a powerful pet shower.",
+        "cta_label": "Shop Now",
+        "cta_link": ""
+      }
+    },
+    "pawely_features_Yz7tjU": {
+      "type": "pawely-features",
+      "name": "Pawely Features",
+      "settings": {
+        "eyebrow": "All-in-One Design",
+        "heading": "Spray. Scrub. Clean.",
+        "description": "The Pawely dog shower sprayer combines water pressure with a built-in soap dispenser to make bath time faster, easier, and more effective.",
+        "cta_label": "Get Yours Today",
+        "cta_link": ""
+      }
+    },
+    "pawely_faq_JKbDcx": {
+      "type": "pawely-faq",
+      "name": "Pawely FAQ",
+      "settings": {}
+    },
+    "pawely_product_LmDrgb": {
+      "type": "pawely-product",
+      "name": "Pawely Product",
+      "settings": {
+        "product": "",
+        "short_description": "Turn any hose into a professional pet shower. Rinse, scrub, and clean your dog in minutes — at home, anytime."
+      }
+    },
+    "pawely_reviews_QCCaQH": {
+      "type": "pawely-reviews",
+      "name": "Pawely Reviews",
+      "settings": {
+        "heading": "Real dogs. Real happy owners."
+      }
+    },
+    "pawely_how_it_works_n6U7Kh": {
+      "type": "pawely-how-it-works",
+      "name": "Pawely How It Works",
+      "settings": {
+        "heading": "How it works",
+        "subheading": "Clean in 3 simple steps."
+      }
+    },
+    "pawely_transformation_P7kMEq": {
+      "type": "pawely-transformation",
+      "name": "Pawely Transformation",
+      "settings": {
+        "left_heading": "From muddy...",
+        "left_subtext": "Muddy paws and messy park runs handled in seconds.",
+        "right_heading": "...to magnificent.",
+        "right_subtext": "The same dog. A whole new vibe."
+      }
+    }
+  },
+  "order": [
+    "pawely_hero_LkfNBq",
+    "pawely_features_Yz7tjU",
+    "pawely_how_it_works_n6U7Kh",
+    "pawely_transformation_P7kMEq",
+    "pawely_product_LmDrgb",
+    "pawely_reviews_QCCaQH",
+    "pawely_faq_JKbDcx"
+  ]
+}
