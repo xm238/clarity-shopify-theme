@@ -38,8 +38,13 @@
           {% endif %}
 
           {% if section.settings.before_image != blank %}
-            {% assign before_focal = section.settings.before_image.presentation.focal_point %}
             {% assign before_alt = section.settings.before_alt | default: section.settings.before_label | default: 'Before grooming' %}
+            {% assign before_focal = section.settings.before_image.presentation.focal_point %}
+            {% if before_focal != blank %}
+              {% assign before_style = 'object-position: ' | append: before_focal %}
+            {% else %}
+              {% assign before_style = '' %}
+            {% endif %}
             {{
               section.settings.before_image
               | image_url: width: 1200
@@ -47,7 +52,7 @@
                 loading: 'lazy',
                 widths: '375, 550, 750, 1100, 1200',
                 class: 'before-after__image',
-                style: before_focal != blank ? 'object-position: ' | append: before_focal : '',
+                style: before_style,
                 alt: before_alt
             }}
           {% else %}
@@ -83,8 +88,13 @@
           {% endif %}
 
           {% if section.settings.after_image != blank %}
-            {% assign after_focal = section.settings.after_image.presentation.focal_point %}
             {% assign after_alt = section.settings.after_alt | default: section.settings.after_label | default: 'After grooming' %}
+            {% assign after_focal = section.settings.after_image.presentation.focal_point %}
+            {% if after_focal != blank %}
+              {% assign after_style = 'object-position: ' | append: after_focal %}
+            {% else %}
+              {% assign after_style = '' %}
+            {% endif %}
             {{
               section.settings.after_image
               | image_url: width: 1200
@@ -92,7 +102,7 @@
                 loading: 'lazy',
                 widths: '375, 550, 750, 1100, 1200',
                 class: 'before-after__image',
-                style: after_focal != blank ? 'object-position: ' | append: after_focal : '',
+                style: after_style,
                 alt: after_alt
             }}
           {% else %}
