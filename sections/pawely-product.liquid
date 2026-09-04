@@ -6,6 +6,9 @@
 <!-- Thumbnail Stack -->
 <div class="flex sm:flex-col gap-3 justify-center sm:justify-start">
 {% assign featured_product = section.settings.product %}
+{% if featured_product == blank %}
+  {% assign featured_product = collections.all.products.first %}
+{% endif %}
 {% if featured_product != blank and featured_product.images.size > 0 %}
   {% for image in featured_product.images limit: 4 %}
     <button class="w-16 h-16 rounded-xl border {% if forloop.first %}border-brand-green{% else %}border-stone-200 hover:border-stone-400{% endif %} overflow-hidden flex-shrink-0 p-1 bg-stone-50 pawely-thumb" type="button" data-src="{{ image | image_url: width: 800 }}">
