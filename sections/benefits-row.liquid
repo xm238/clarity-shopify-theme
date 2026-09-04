@@ -1,0 +1,237 @@
+{% comment %}
+  Benefits Row Section
+  Renders a compact 3-column benefits bar with icons, headings, and descriptions.
+{% endcomment %}
+
+<div
+  class="benefits-row color-{{ section.settings.color_scheme }}"
+  style="
+    --padding-top: {{ section.settings.padding_top }}px;
+    --padding-bottom: {{ section.settings.padding_bottom }}px;
+  "
+>
+  <div class="page-width">
+    <div class="benefits-row__grid" role="region" aria-label="Store Benefits">
+      {% for block in section.blocks %}
+        <div class="benefits-row__item" {{ block.shopify_attributes }}>
+          <div class="benefits-row__icon-wrapper" aria-hidden="true">
+            {% case block.settings.icon %}
+              {% when 'sparkles' %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+                  <path d="M5 3v4"/>
+                  <path d="M19 17v4"/>
+                </svg>
+              {% when 'shield' %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+                  <path d="m9 12 2 2 4-4"/>
+                </svg>
+              {% when 'shipping' %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/>
+                  <path d="M15 18H9"/>
+                  <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/>
+                  <circle cx="17" cy="18" r="2"/>
+                  <circle cx="7" cy="18" r="2"/>
+                </svg>
+              {% else %}
+                {% if block.settings.icon != blank %}
+                  {% render 'icon', icon: block.settings.icon %}
+                {% else %}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="m9 12 2 2 4-4"/>
+                  </svg>
+                {% endif %}
+            {% endcase %}
+          </div>
+          <div class="benefits-row__text">
+            {% if block.settings.heading != blank %}
+              <h3 class="benefits-row__title h6">{{ block.settings.heading | escape }}</h3>
+            {% endif %}
+            {% if block.settings.description != blank %}
+              <p class="benefits-row__description">{{ block.settings.description | escape }}</p>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .benefits-row {
+    padding-top: var(--padding-top, 32px);
+    padding-bottom: var(--padding-bottom, 32px);
+    border-bottom: 1px solid var(--color-soft-border-neutral, #E2DFD7);
+  }
+
+  .benefits-row__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.75rem;
+
+    @media screen and (min-width: 600px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (min-width: 990px) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+    }
+  }
+
+  .benefits-row__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+    background-color: var(--color-warm-base, #FAF8F5);
+    border-radius: var(--radius-editorial-card, 16px);
+    border: 1px solid var(--color-soft-border-neutral, #E2DFD7);
+    transition: var(--transition-editorial-default, all 0.25s ease);
+  }
+
+  .benefits-row__item:hover {
+    box-shadow: var(--shadow-restrained-card, 0 4px 20px -2px rgba(24, 38, 28, 0.05));
+    border-color: #D3CDC1;
+  }
+
+  .benefits-row__icon-wrapper {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--color-pale-green-accent, #E8EFE9);
+    color: var(--color-deep-green-action, #1E3A2B);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .benefits-row__text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .benefits-row__title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-charcoal-heading, #161C16);
+    letter-spacing: -0.01em;
+  }
+
+  .benefits-row__description {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: var(--color-charcoal-text, #2B302B);
+    opacity: 0.9;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Benefits Row",
+  "class": "benefits-row-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 12,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 12,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 32
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "sparkles", "label": "Sparkles / Gentle" },
+            { "value": "shield", "label": "Shield / Safe" },
+            { "value": "shipping", "label": "Shipping / Truck" },
+            { "value": "box", "label": "Box" },
+            { "value": "checkmark", "label": "Checkmark" },
+            { "value": "heart", "label": "Heart" }
+          ],
+          "default": "sparkles"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Ease of Use"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Intuitive 3-mode operation designed for quick, hassle-free grooming sessions."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits Row",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "sparkles",
+            "heading": "Effortless Operation",
+            "description": "Ergonomic 3-mode spray control for serene, simple bath times."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "shield",
+            "heading": "Gentle & Safe",
+            "description": "Soft-touch pressure design preserves coat health and calms pets."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "shipping",
+            "heading": "Fast Free Delivery",
+            "description": "Complimentary tracked shipping on all orders over $50."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,375 @@
+{% comment %}
+  Product Introduction Section
+  Renders a split layout with product image on the left, central copy & CTA, and a compact feature callouts grid on the right.
+{% endcomment %}
+
+<div
+  class="product-intro color-{{ section.settings.color_scheme }}"
+  style="
+    --padding-top: {{ section.settings.padding_top }}px;
+    --padding-bottom: {{ section.settings.padding_bottom }}px;
+  "
+>
+  <div class="page-width">
+    <div class="product-intro__wrapper">
+      
+      {% comment %} Left Column: Product Image Frame {% endcomment %}
+      <div class="product-intro__media-column">
+        <div class="product-intro__media-card">
+          {% if section.settings.image != blank %}
+            {{
+              section.settings.image
+              | image_url: width: 1200
+              | image_tag:
+                loading: 'lazy',
+                widths: '375, 550, 750, 1100, 1200',
+                class: 'product-intro__image',
+                alt: section.settings.image.alt | default: section.settings.heading | escape
+            }}
+          {% else %}
+            <div class="product-intro__placeholder">
+              {{ 'product-1' | placeholder_svg_tag: 'product-intro__placeholder-svg' }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      {% comment %} Right Column: Content & Compact Feature Callouts Grid {% endcomment %}
+      <div class="product-intro__content-column">
+        
+        {% comment %} Eyebrow & Headings {% endcomment %}
+        {% if section.settings.eyebrow != blank %}
+          <span class="hero-eyebrow">{{ section.settings.eyebrow | escape }}</span>
+        {% endif %}
+
+        {% if section.settings.heading != blank %}
+          <h2 class="product-intro__heading h2">{{ section.settings.heading | escape }}</h2>
+        {% endif %}
+
+        {% if section.settings.description != blank %}
+          <p class="product-intro__description">{{ section.settings.description | escape }}</p>
+        {% endif %}
+
+        {% comment %} Compact Feature Grid {% endcomment %}
+        {% if section.blocks.size > 0 %}
+          <div class="product-intro__features-grid">
+            {% for block in section.blocks %}
+              <div class="product-intro__feature-item" {{ block.shopify_attributes }}>
+                <div class="product-intro__feature-icon" aria-hidden="true">
+                  {% case block.settings.icon %}
+                    {% when 'sparkles' %}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                    {% when 'shield' %}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+                    {% when 'bottle' %}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v4M8 6h8M6 10h12v11a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V10z"/></svg>
+                    {% else %}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                  {% endcase %}
+                </div>
+                <div class="product-intro__feature-text">
+                  {% if block.settings.title != blank %}
+                    <h4 class="product-intro__feature-title h6">{{ block.settings.title | escape }}</h4>
+                  {% endif %}
+                  {% if block.settings.text != blank %}
+                    <p class="product-intro__feature-desc">{{ block.settings.text | escape }}</p>
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% comment %} Green CTA Button {% endcomment %}
+        {% if section.settings.button_label != blank %}
+          <div class="product-intro__cta-wrapper">
+            <a
+              href="{{ section.settings.button_link | default: '/collections/all' }}"
+              class="button button--primary"
+            >
+              {{ section.settings.button_label | escape }}
+            </a>
+          </div>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .product-intro {
+    padding-top: var(--padding-top, 48px);
+    padding-bottom: var(--padding-bottom, 48px);
+  }
+
+  .product-intro__wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+
+    @media screen and (min-width: 990px) {
+      grid-template-columns: 1fr 1.15fr;
+      gap: 4rem;
+    }
+  }
+
+  .product-intro__media-card {
+    background-color: var(--color-warm-base, #FAF8F5);
+    border-radius: var(--radius-editorial-card, 20px);
+    border: 1px solid var(--color-soft-border-neutral, #E2DFD7);
+    box-shadow: var(--shadow-restrained-card, 0 4px 20px -2px rgba(24, 38, 28, 0.05));
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 4 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-intro__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s var(--ease-out-cubic, ease);
+  }
+
+  .product-intro__media-card:hover .product-intro__image {
+    transform: scale(1.02);
+  }
+
+  .product-intro__placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #E8EFE9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-intro__placeholder-svg {
+    width: 50%;
+    height: 50%;
+    opacity: 0.4;
+  }
+
+  .product-intro__content-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .product-intro__heading {
+    margin-block-start: 0.5rem;
+    margin-block-end: 1rem;
+    color: var(--color-charcoal-heading, #161C16);
+    line-height: 1.2;
+  }
+
+  .product-intro__description {
+    margin-block-start: 0;
+    margin-block-end: 1.75rem;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: var(--color-charcoal-text, #2B302B);
+    opacity: 0.95;
+  }
+
+  .product-intro__features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    width: 100%;
+    margin-block-end: 2rem;
+
+    @media screen and (min-width: 600px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+  }
+
+  .product-intro__feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 1rem;
+    background-color: var(--color-warm-base, #FAF8F5);
+    border-radius: var(--radius-editorial-input, 12px);
+    border: 1px solid var(--color-soft-border-neutral, #E2DFD7);
+  }
+
+  .product-intro__feature-icon {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: var(--color-pale-green-accent, #E8EFE9);
+    color: var(--color-deep-green-action, #1E3A2B);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-intro__feature-title {
+    margin: 0 0 0.2rem 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-charcoal-heading, #161C16);
+  }
+
+  .product-intro__feature-desc {
+    margin: 0;
+    font-size: 0.825rem;
+    line-height: 1.35;
+    color: var(--color-charcoal-text, #2B302B);
+    opacity: 0.85;
+  }
+
+  .product-intro__cta-wrapper {
+    margin-block-start: 0.5rem;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Product Introduction",
+  "class": "product-intro-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product Image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "DESIGNED FOR PET COMFORT"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "3-in-1 Precision Spray System"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Transform bath time with an intuitive, ergonomic pet washer that gently massages while deep cleaning thick coats."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Discover Product Details →"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 12,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 12,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Callout",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "sparkles", "label": "Sparkles" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "bottle", "label": "Bottle" },
+            { "value": "check", "label": "Checkmark" }
+          ],
+          "default": "sparkles"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Feature Title",
+          "default": "3 Custom Modes"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Feature Description",
+          "default": "Seamlessly switch between rinse, lather, and massage modes."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Introduction",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "sparkles",
+            "title": "3 Custom Modes",
+            "text": "Switch between gentle rinse, lather, and massage."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "shield",
+            "title": "Coat Protection",
+            "text": "Calming water pressure preserves natural coat oils."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "bottle",
+            "title": "Integrated Soap Reservoir",
+            "text": "Mix shampoo directly into water for fast foaming."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "check",
+            "title": "Universal Hose Fit",
+            "text": "Attaches easily to standard garden & shower hoses."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

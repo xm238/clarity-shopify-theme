@@ -1,0 +1,321 @@
+{% comment %}
+  FAQ Accordion Section
+  Renders expandable FAQ items using native accessible <details>/<summary> disclosure elements wrapped in <accordion-custom>.
+{% endcomment %}
+
+<script src="{{ 'accordion-custom.js' | asset_url }}" type="module" fetchpriority="low"></script>
+
+<div
+  class="faq-section color-{{ section.settings.color_scheme }}"
+  style="
+    --padding-top: {{ section.settings.padding_top }}px;
+    --padding-bottom: {{ section.settings.padding_bottom }}px;
+  "
+>
+  <div class="page-width">
+    
+    {% comment %} Section Header {% endcomment %}
+    <div class="faq-section__header">
+      {% if section.settings.eyebrow != blank %}
+        <span class="hero-eyebrow">{{ section.settings.eyebrow | escape }}</span>
+      {% endif %}
+      {% if section.settings.heading != blank %}
+        <h2 class="faq-section__heading h2">{{ section.settings.heading | escape }}</h2>
+      {% endif %}
+      {% if section.settings.description != blank %}
+        <p class="faq-section__description">{{ section.settings.description | escape }}</p>
+      {% endif %}
+    </div>
+
+    {% comment %} FAQ Items Grid / Multi-column Layout {% endcomment %}
+    {% if section.blocks.size > 0 %}
+      <div class="faq-section__grid">
+        {% for block in section.blocks %}
+          <div class="faq-section__item-wrapper" {{ block.shopify_attributes }}>
+            {% capture accordion_content %}
+              <details
+                class="faq-section__details"
+                {% if block.settings.open_by_default %}open{% endif %}
+              >
+                <summary class="faq-section__summary">
+                  <span class="faq-section__question-text h5">{{ block.settings.question | escape }}</span>
+                  <span class="faq-section__icon-wrapper" aria-hidden="true">
+                    <svg class="faq-section__icon faq-section__icon--plus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    <svg class="faq-section__icon faq-section__icon--minus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                  </span>
+                </summary>
+                <div class="details-content faq-section__answer-wrapper">
+                  <div class="faq-section__answer-text">
+                    {{ block.settings.answer }}
+                  </div>
+                </div>
+              </details>
+            {% endcapture %}
+
+            {% render 'accordion-custom-component',
+              children: accordion_content,
+              open_by_default_on_desktop: block.settings.open_by_default,
+              open_by_default_on_mobile: block.settings.open_by_default
+            %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+
+{% stylesheet %}
+  .faq-section {
+    padding-top: var(--padding-top, 48px);
+    padding-bottom: var(--padding-bottom, 48px);
+  }
+
+  .faq-section__header {
+    max-width: 640px;
+    margin: 0 auto 3rem;
+    text-align: center;
+  }
+
+  .faq-section__heading {
+    margin-block-start: 0.5rem;
+    margin-block-end: 0.75rem;
+    color: var(--color-charcoal-heading, #161C16);
+    line-height: 1.2;
+  }
+
+  .faq-section__description {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: var(--color-charcoal-text, #2B302B);
+    opacity: 0.9;
+  }
+
+  .faq-section__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+
+    @media screen and (min-width: 840px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      align-items: start;
+    }
+  }
+
+  .faq-section__item-wrapper {
+    width: 100%;
+  }
+
+  .faq-section__details {
+    background-color: var(--color-warm-base, #FAF8F5);
+    border-radius: var(--radius-editorial-card, 16px);
+    border: 1px solid var(--color-soft-border-neutral, #E2DFD7);
+    box-shadow: var(--shadow-restrained-card, 0 4px 16px -2px rgba(24, 38, 28, 0.04));
+    overflow: hidden;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .faq-section__details:hover {
+    border-color: rgba(30, 58, 43, 0.25);
+  }
+
+  .faq-section__details[open] {
+    border-color: var(--color-deep-green-action, #1E3A2B);
+  }
+
+  .faq-section__summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+
+  .faq-section__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-section__summary:focus-visible {
+    outline: 2px solid var(--color-deep-green-action, #1E3A2B);
+    outline-offset: -2px;
+  }
+
+  .faq-section__question-text {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-charcoal-heading, #161C16);
+    line-height: 1.35;
+    padding-right: 1rem;
+  }
+
+  .faq-section__icon-wrapper {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--color-pale-green-accent, #E8EFE9);
+    color: var(--color-deep-green-action, #1E3A2B);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+  }
+
+  .faq-section__icon--minus {
+    display: none;
+  }
+
+  .faq-section__details[open] .faq-section__icon--plus {
+    display: none;
+  }
+
+  .faq-section__details[open] .faq-section__icon--minus {
+    display: block;
+  }
+
+  .faq-section__answer-wrapper {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+  }
+
+  .faq-section__answer-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-charcoal-text, #2B302B);
+    opacity: 0.9;
+  }
+
+  .faq-section__answer-text p {
+    margin-block-start: 0;
+    margin-block-end: 0.75rem;
+  }
+
+  .faq-section__answer-text p:last-child {
+    margin-block-end: 0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "FAQ Accordion",
+  "class": "faq-accordion-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "FREQUENTLY ASKED QUESTIONS"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Everything You Need to Know"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Supporting Description",
+      "default": "Find answers to common questions about our 3-mode pet sprayer, hose compatibility, and shipping."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 12,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 12,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Will this sprayer fit my existing garden hose or shower?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Yes! It features a standard 3/4-inch thread connector compatible with virtually all outdoor garden hoses and indoor shower adapters.</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_by_default",
+          "label": "Open by Default",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Accordion",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Will this sprayer fit my existing garden hose or shower?",
+            "answer": "<p>Yes! It features a standard 3/4-inch thread connector compatible with virtually all outdoor garden hoses and indoor shower adapters.</p>",
+            "open_by_default": true
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How does the built-in shampoo reservoir work?",
+            "answer": "<p>Simply unscrew the clear soap container, fill it with your favorite pet shampoo, and turn the dial to activate soap mixing. Water and shampoo automatically blend into a rich lather.</p>",
+            "open_by_default": false
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is the water pressure safe for sensitive puppies or older dogs?",
+            "answer": "<p>Absolutely. The 3-mode dial allows you to select a soft gentle mist setting specifically designed for sensitive skin, eyes, and ears.</p>",
+            "open_by_default": false
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your warranty and return policy?",
+            "answer": "<p>We offer a 30-day money-back guarantee and a 1-year limited warranty against manufacturing defects.</p>",
+            "open_by_default": false
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
