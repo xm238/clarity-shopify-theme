@@ -1,13 +1,13 @@
 <section class="py-16 sm:py-20 bg-stone-50/60 border-b border-stone-200/50">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+<div class="!grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
 <!-- Left: Product Cutout Image -->
 <div class="lg:col-span-4 flex justify-center">
 <div class="relative w-64 h-64 sm:w-80 sm:h-80 flex items-center justify-center p-4">
 {% if section.settings.product_image != blank %}
-  <img alt="Pawely Dog Shower Sprayer with built-in soap dispenser" class="w-full h-full object-contain filter drop-shadow-2xl hover:scale-105 transition-transform duration-300 rounded-2xl" src="{{ section.settings.product_image | image_url: width: 800 }}">
+  <img width="800" height="800" alt="Pawely Dog Shower Sprayer with built-in soap dispenser" class="w-full h-full object-contain filter drop-shadow-2xl hover:scale-105 transition-transform duration-300 rounded-2xl" src="{{ section.settings.product_image | image_url: width: 800 }}">
 {% else %}
-  <img alt="Pawely Dog Shower Sprayer with built-in soap dispenser" class="w-full h-full object-contain filter drop-shadow-2xl hover:scale-105 transition-transform duration-300 rounded-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkNcWn-LHezFJQQQnPqc-Mnujf3lrhuYULLvEFnCrxTsuz3_-Oln5pPjkNZRHDqE2DlDB9HdqztBtf_EIofkQA_pR5ivADuz0cyA_Kc6VQVTRJv8kSQI520QtQWggjMsnqbjaHZy1TIEIf6UCAWfG9Ulam8JR604N7A57r3TuEIfkagTO7vKnh6Rfa5gXOKsJCd6AXKEHSfHS1qNVvktnLdmbiXm9STiBciM3UUos_tHxlpheNYxkkFw">
+  <img width="800" height="800" alt="Pawely Dog Shower Sprayer with built-in soap dispenser" class="w-full h-full object-contain filter drop-shadow-2xl hover:scale-105 transition-transform duration-300 rounded-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkNcWn-LHezFJQQQnPqc-Mnujf3lrhuYULLvEFnCrxTsuz3_-Oln5pPjkNZRHDqE2DlDB9HdqztBtf_EIofkQA_pR5ivADuz0cyA_Kc6VQVTRJv8kSQI520QtQWggjMsnqbjaHZy1TIEIf6UCAWfG9Ulam8JR604N7A57r3TuEIfkagTO7vKnh6Rfa5gXOKsJCd6AXKEHSfHS1qNVvktnLdmbiXm9STiBciM3UUos_tHxlpheNYxkkFw">
 {% endif %}
 </div>
 </div>
@@ -25,7 +25,7 @@
 </a>
 </div>
 <!-- Feature 4-Item List -->
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 border-t border-stone-200">
+<div class="!grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 border-t border-stone-200">
 <!-- Feature 1 -->
 <div class="flex items-start gap-4">
 <div class="w-10 h-10 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center flex-shrink-0 text-brand-green">

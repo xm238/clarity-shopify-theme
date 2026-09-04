@@ -1,6 +1,6 @@
 <section class="py-16 sm:py-24 bg-white border-b border-stone-200" id="product-purchase">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<div class="!grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 <!-- Image Gallery Column (Thumbnails + Main) -->
 <div class="lg:col-span-5 flex flex-col-reverse sm:flex-row gap-4">
 <!-- Thumbnail Stack -->
@@ -9,30 +9,30 @@
 {% if featured_product != blank and featured_product.images.size > 0 %}
   {% for image in featured_product.images limit: 4 %}
     <button class="w-16 h-16 rounded-xl border {% if forloop.first %}border-brand-green{% else %}border-stone-200 hover:border-stone-400{% endif %} overflow-hidden flex-shrink-0 p-1 bg-stone-50 pawely-thumb" type="button" data-src="{{ image | image_url: width: 800 }}">
-      <img alt="{{ image.alt | escape }}" class="w-full h-full object-cover rounded-lg" src="{{ image | image_url: width: 150 }}">
+      <img width="800" height="800" alt="{{ image.alt | escape }}" class="w-full h-full object-cover rounded-lg" src="{{ image | image_url: width: 150 }}">
     </button>
   {% endfor %}
 {% else %}
   <button class="w-16 h-16 rounded-xl border border-brand-green overflow-hidden flex-shrink-0 p-1 bg-stone-50 pawely-thumb" type="button" data-src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0c58EDHRogjBBa-iWGdNFScIn4qh7Z01z6Xpl6-v3t8C3Chp8-zecWWLCLUB9buojwethqJoHi4xhSmEek6P5VFNGecPItoblrX_rcWMipLjs94kMtanO-iY-FvxtadHkLAVf7Anga4qpnt1Mq7ntLoBOtQtC57YFsw5cXsDoJy4Xw4m4CsCtt9__wl2cWuW2M7T-4GCdkeMMGdT2fUcotf5Fwv3csTthoAwNba6OQ0LHezSyWd0L7A">
-    <img alt="Thumb 1" class="w-full h-full object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0c58EDHRogjBBa-iWGdNFScIn4qh7Z01z6Xpl6-v3t8C3Chp8-zecWWLCLUB9buojwethqJoHi4xhSmEek6P5VFNGecPItoblrX_rcWMipLjs94kMtanO-iY-FvxtadHkLAVf7Anga4qpnt1Mq7ntLoBOtQtC57YFsw5cXsDoJy4Xw4m4CsCtt9__wl2cWuW2M7T-4GCdkeMMGdT2fUcotf5Fwv3csTthoAwNba6OQ0LHezSyWd0L7A">
+    <img width="800" height="800" alt="Thumb 1" class="w-full h-full object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0c58EDHRogjBBa-iWGdNFScIn4qh7Z01z6Xpl6-v3t8C3Chp8-zecWWLCLUB9buojwethqJoHi4xhSmEek6P5VFNGecPItoblrX_rcWMipLjs94kMtanO-iY-FvxtadHkLAVf7Anga4qpnt1Mq7ntLoBOtQtC57YFsw5cXsDoJy4Xw4m4CsCtt9__wl2cWuW2M7T-4GCdkeMMGdT2fUcotf5Fwv3csTthoAwNba6OQ0LHezSyWd0L7A">
   </button>
   <button class="w-16 h-16 rounded-xl border border-stone-200 hover:border-stone-400 overflow-hidden flex-shrink-0 p-1 bg-stone-50 pawely-thumb" type="button" data-src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdX9qxzgX8vPY9bKwxpASWQOXn5jPDlS8NgWX-m1vrOl2DrCpDq95P8XcUM0YN2s3h2KUiYLMsMZr2M3o3CcxFf3R484kRpgaDfotyvoskKrCZaYWHI8RxIe3mI479TecsBI1F_Mj4vmGyynwpvnhM92bFVHh82m1kfNrlgZs0ejB1XzDW2isVzczwcAyhWBi6Pie3eKvls6XFcgh1RGS3QWh68zKk8Xy2Cr-wcY4I8xjJFb7OTAlQjw">
-    <img alt="Thumb 2" class="w-full h-full object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdX9qxzgX8vPY9bKwxpASWQOXn5jPDlS8NgWX-m1vrOl2DrCpDq95P8XcUM0YN2s3h2KUiYLMsMZr2M3o3CcxFf3R484kRpgaDfotyvoskKrCZaYWHI8RxIe3mI479TecsBI1F_Mj4vmGyynwpvnhM92bFVHh82m1kfNrlgZs0ejB1XzDW2isVzczwcAyhWBi6Pie3eKvls6XFcgh1RGS3QWh68zKk8Xy2Cr-wcY4I8xjJFb7OTAlQjw">
+    <img width="800" height="800" alt="Thumb 2" class="w-full h-full object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdX9qxzgX8vPY9bKwxpASWQOXn5jPDlS8NgWX-m1vrOl2DrCpDq95P8XcUM0YN2s3h2KUiYLMsMZr2M3o3CcxFf3R484kRpgaDfotyvoskKrCZaYWHI8RxIe3mI479TecsBI1F_Mj4vmGyynwpvnhM92bFVHh82m1kfNrlgZs0ejB1XzDW2isVzczwcAyhWBi6Pie3eKvls6XFcgh1RGS3QWh68zKk8Xy2Cr-wcY4I8xjJFb7OTAlQjw">
   </button>
   <button class="w-16 h-16 rounded-xl border border-stone-200 hover:border-stone-400 overflow-hidden flex-shrink-0 p-1 bg-stone-50 pawely-thumb" type="button" data-src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuy7sgAS656xcB3oV-Da5NIAC8d6e0jDUhl03Nn0BvTUfZ9noGWApcr1A6D0vEFWXRk5qhsuyzzu6d_is5YZSgMdp-vzTMcnienzm7KQMh2iHZK0A_LbO4Pdxx6i0IcsDDQuUt31xx1Ms2YriDbzLw2RifIqUjRPJ0REQdLx4Fs3MCbsMIgF9j8V6raFbH-duogNoRKc3jWcqZBRpTslWwTjGRRvT1iiwUXIJL_6P7lR_hSFfto7R2LQ">
-    <img alt="Thumb 3" class="w-full h-full object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuy7sgAS656xcB3oV-Da5NIAC8d6e0jDUhl03Nn0BvTUfZ9noGWApcr1A6D0vEFWXRk5qhsuyzzu6d_is5YZSgMdp-vzTMcnienzm7KQMh2iHZK0A_LbO4Pdxx6i0IcsDDQuUt31xx1Ms2YriDbzLw2RifIqUjRPJ0REQdLx4Fs3MCbsMIgF9j8V6raFbH-duogNoRKc3jWcqZBRpTslWwTjGRRvT1iiwUXIJL_6P7lR_hSFfto7R2LQ">
+    <img width="800" height="800" alt="Thumb 3" class="w-full h-full object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuy7sgAS656xcB3oV-Da5NIAC8d6e0jDUhl03Nn0BvTUfZ9noGWApcr1A6D0vEFWXRk5qhsuyzzu6d_is5YZSgMdp-vzTMcnienzm7KQMh2iHZK0A_LbO4Pdxx6i0IcsDDQuUt31xx1Ms2YriDbzLw2RifIqUjRPJ0REQdLx4Fs3MCbsMIgF9j8V6raFbH-duogNoRKc3jWcqZBRpTslWwTjGRRvT1iiwUXIJL_6P7lR_hSFfto7R2LQ">
   </button>
   <button class="w-16 h-16 rounded-xl border border-stone-200 hover:border-stone-400 overflow-hidden flex-shrink-0 p-1 bg-stone-50 pawely-thumb" type="button" data-src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFbPbVvPuNtQb_IGYV2HItLJ6DP9b8QMBa4M1PxqYHw3USeC1m2WgBQhXMrMMRUy_S__ijlNNJbL-5Qcrivh16kFENhOyGZTpWq5ryn2fX2teeqqDwbrUhPlb1ucPWXnm5sNF9KCQKCuV4PCStuw_6lap55Kalgr3Z5AUDOxm6f8eJ37NL_Izfu-_g138wzges5GBeX9FVJirdxPyPivVLdkC3wpqhcghfdp0VEIfEWkZSpZCObHmIJw">
-    <img alt="Thumb 4" class="w-full h-full object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFbPbVvPuNtQb_IGYV2HItLJ6DP9b8QMBa4M1PxqYHw3USeC1m2WgBQhXMrMMRUy_S__ijlNNJbL-5Qcrivh16kFENhOyGZTpWq5ryn2fX2teeqqDwbrUhPlb1ucPWXnm5sNF9KCQKCuV4PCStuw_6lap55Kalgr3Z5AUDOxm6f8eJ37NL_Izfu-_g138wzges5GBeX9FVJirdxPyPivVLdkC3wpqhcghfdp0VEIfEWkZSpZCObHmIJw">
+    <img width="800" height="800" alt="Thumb 4" class="w-full h-full object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFbPbVvPuNtQb_IGYV2HItLJ6DP9b8QMBa4M1PxqYHw3USeC1m2WgBQhXMrMMRUy_S__ijlNNJbL-5Qcrivh16kFENhOyGZTpWq5ryn2fX2teeqqDwbrUhPlb1ucPWXnm5sNF9KCQKCuV4PCStuw_6lap55Kalgr3Z5AUDOxm6f8eJ37NL_Izfu-_g138wzges5GBeX9FVJirdxPyPivVLdkC3wpqhcghfdp0VEIfEWkZSpZCObHmIJw">
   </button>
 {% endif %}
 </div>
 <!-- Big Main View -->
 <div class="relative flex-1 rounded-3xl bg-stone-50 border border-stone-200/80 p-6 flex items-center justify-center overflow-hidden min-h-[360px] sm:min-h-[440px]">
 {% if featured_product != blank and featured_product.featured_image != blank %}
-  <img id="pawely-main-img" alt="{{ featured_product.title | escape }}" class="w-full max-h-[380px] object-contain drop-shadow-xl" src="{{ featured_product.featured_image | image_url: width: 800 }}">
+  <img width="800" height="800" id="pawely-main-img" alt="{{ featured_product.title | escape }}" class="w-full max-h-[380px] object-contain drop-shadow-xl" src="{{ featured_product.featured_image | image_url: width: 800 }}">
 {% else %}
-  <img id="pawely-main-img" alt="Pawely Dog Shower Sprayer Main Showcase" class="w-full max-h-[380px] object-contain drop-shadow-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD92kRbUKp1h8FcN50pt-QC2n8nFKQlECGbtv0FrB57n2q1_693w7W0XDdmejY_bJvkWtgsrtHA4gHFz8RwnBaesdpLdqgAVj8MvfUEtkYEiJyDPEXPtdARZMAgv50HlXCHAn_8NgewQEZOO_HDO2ZaNi3-bJ6zpjx12V0PUq1eV-Hf7OqcfrDuxT1qHGA8qNGKrt8z-TDq_ocEaRsSrr64R2Ony3UPn8OKspswmVD07_mky1GKcuTrIA">
+  <img width="800" height="800" id="pawely-main-img" alt="Pawely Dog Shower Sprayer Main Showcase" class="w-full max-h-[380px] object-contain drop-shadow-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD92kRbUKp1h8FcN50pt-QC2n8nFKQlECGbtv0FrB57n2q1_693w7W0XDdmejY_bJvkWtgsrtHA4gHFz8RwnBaesdpLdqgAVj8MvfUEtkYEiJyDPEXPtdARZMAgv50HlXCHAn_8NgewQEZOO_HDO2ZaNi3-bJ6zpjx12V0PUq1eV-Hf7OqcfrDuxT1qHGA8qNGKrt8z-TDq_ocEaRsSrr64R2Ony3UPn8OKspswmVD07_mky1GKcuTrIA">
 {% endif %}
 <!-- Handwritten Arrow / Note -->
 <div class="absolute bottom-5 right-6 text-stone-700 font-handwriting text-xl select-none leading-tight">
@@ -124,7 +124,7 @@
 {% endif %}
 
 <!-- Guarantee Icons -->
-<div class="grid grid-cols-3 gap-2 text-center pt-4 border-t border-stone-200 text-[11px] text-stone-600 font-medium">
+<div class="!grid grid-cols-3 gap-2 text-center pt-4 border-t border-stone-200 text-[11px] text-stone-600 font-medium">
 <div class="flex flex-col items-center">
 <svg class="w-4 h-4 mb-1 text-stone-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
 <span class="">Free Shipping<br><span class="text-[10px] text-stone-400">Worldwide</span></span>
@@ -144,7 +144,7 @@
 <div class="bg-stone-50 rounded-2xl border border-stone-200/80 p-4">
 <!-- Video Preview Thumbnail with play overlay -->
 <div class="relative w-full aspect-[4/5] rounded-xl overflow-hidden shadow bg-stone-900 group cursor-pointer">
-<img alt="Dog shower sprayer video preview" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5R83K4xseDlBfVJbKd-eKMWdq7Fp7mfI7XXZswILwyA-mUNIEfnR5x-lN3nffUD8WZZdGqQ_F6jp6qPftt7ENbPQcxRtNs-5CQ-QUEMK7i3FuYqE_a-o1DSVzGGUaIdprqKzTgiGKDUq_O8ZWUvjnF9zDsP0Evrrfm1zFqicTAGtGTIUVXIv5dWcf5CuG2WEog3x5AIssjFwGEr0ap8IT6xuCm-8EDo9c5sYqLL4MT4yxNdDIMxg7dA">
+<img width="800" height="800" alt="Dog shower sprayer video preview" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5R83K4xseDlBfVJbKd-eKMWdq7Fp7mfI7XXZswILwyA-mUNIEfnR5x-lN3nffUD8WZZdGqQ_F6jp6qPftt7ENbPQcxRtNs-5CQ-QUEMK7i3FuYqE_a-o1DSVzGGUaIdprqKzTgiGKDUq_O8ZWUvjnF9zDsP0Evrrfm1zFqicTAGtGTIUVXIv5dWcf5CuG2WEog3x5AIssjFwGEr0ap8IT6xuCm-8EDo9c5sYqLL4MT4yxNdDIMxg7dA">
 <span class="absolute top-3 left-3 text-white text-xs font-extrabold tracking-wider bg-black/40 px-2 py-0.5 rounded uppercase">
                   SOAP ON
                 </span>

@@ -1,6 +1,6 @@
 <section class="relative overflow-hidden bg-brand-cream pt-10 pb-16 lg:pt-16 lg:pb-24 border-b border-stone-200/50">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<div class="!grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 <!-- Left Hero Content -->
 <div class="lg:col-span-6 z-10">
 <span class="inline-block text-xs font-bold tracking-widest text-stone-600 uppercase mb-3">
@@ -20,7 +20,7 @@
 </a>
 </div>
 <!-- Value Props List -->
-<div class="grid grid-cols-3 gap-4 pt-4 border-t border-stone-200/70 max-w-lg">
+<div class="!grid grid-cols-3 gap-4 pt-4 border-t border-stone-200/70 max-w-lg">
 <div class="flex flex-col items-center sm:items-start text-center sm:text-left">
 <svg class="w-6 h-6 text-stone-800 mb-2" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
 <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -45,9 +45,9 @@
 <div class="lg:col-span-6 relative mt-4 lg:mt-0 flex justify-center items-center">
 <div class="relative w-full max-w-lg aspect-square lg:aspect-[4/3] rounded-3xl overflow-hidden shadow-xl bg-stone-100">
 {% if section.settings.hero_image != blank %}
-  <img alt="Happy Golden Retriever getting washed outdoors with fresh water spray" class="w-full h-full object-cover" src="{{ section.settings.hero_image | image_url: width: 1200 }}">
+  <img width="800" height="800" alt="Happy Golden Retriever getting washed outdoors with fresh water spray" class="w-full h-full object-cover" src="{{ section.settings.hero_image | image_url: width: 1200 }}">
 {% else %}
-  <img alt="Happy Golden Retriever getting washed outdoors with fresh water spray" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB3fSZLyYNuEkr-pEF6FDToCWiCojaXQbfSsAy6Mxmq1mh-jBAEezqS3BQA84QwGEwjt-h8prHylNerjnz8TXYb7QUtcZpwtcoVduEOZOdCkzdOYRdCNN3qI9P3_MtgvP5-m6liMplv6Apz2qgsrrrd-3Fz50XTAaK1WSPvMFWmAbCEY62HYxxgZF9De8hrJHRGPvqY1F8kRTNPbErgvHBZJN0B8CLpMz1QveFHqAZ2VtDxxJxqohBXA">
+  <img width="800" height="800" alt="Happy Golden Retriever getting washed outdoors with fresh water spray" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB3fSZLyYNuEkr-pEF6FDToCWiCojaXQbfSsAy6Mxmq1mh-jBAEezqS3BQA84QwGEwjt-h8prHylNerjnz8TXYb7QUtcZpwtcoVduEOZOdCkzdOYRdCNN3qI9P3_MtgvP5-m6liMplv6Apz2qgsrrrd-3Fz50XTAaK1WSPvMFWmAbCEY62HYxxgZF9De8hrJHRGPvqY1F8kRTNPbErgvHBZJN0B8CLpMz1QveFHqAZ2VtDxxJxqohBXA">
 {% endif %}
 <!-- Subtle spray effect overlay -->
 <div class="absolute inset-0 bg-gradient-to-tr from-brand-cream/30 via-transparent to-transparent pointer-events-none"></div>
