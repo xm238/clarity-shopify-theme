@@ -85,7 +85,7 @@
       {% unless featured_product.has_only_default_variant %}
         <div class="mb-4">
           <label class="block text-xs font-bold text-stone-700 mb-1">Select Option</label>
-          <select id="pawely-variant-select" name="id" class="w-full text-sm rounded-lg p-2.5 outline-none" style="border: 1px solid #d6d3d1 !important; background-color: #fafaf9 !important; appearance: auto !important;">
+          <select id="pawely-variant-select" name="id" class="w-full text-sm rounded-lg p-2.5 outline-none" style="border: 1px solid #d6d3d1 !important; background-color: #fafaf9 !important;">
             {% for variant in featured_product.variants %}
               <option value="{{ variant.id }}" {% if variant == featured_product.selected_or_first_available_variant %}selected{% endif %}>
                 {{ variant.title }} - {{ variant.price | money }}
