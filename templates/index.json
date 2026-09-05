@@ -9,8 +9,116 @@
  */
 {
   "sections": {
+    "hero_HMWiYa": {
+      "type": "hero",
+      "blocks": {
+        "text_wxHzVb": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Bath Time. Reinvented.</p>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "h1",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_pNCQPC": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The PawJet™ auto-lathers shampoo right into the spray — so you wash your dog faster, cleaner, and without the mess.</p>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 32,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "button_BWphGN": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "Shop now",
+            "link": "shopify://collections/all",
+            "open_in_new_tab": false,
+            "style_class": "button-secondary",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_wxHzVb",
+        "text_pNCQPC",
+        "button_BWphGN"
+      ],
+      "name": "t:names.hero",
+      "settings": {
+        "media_type_1": "image",
+        "image_1": "shopify://shop_images/264f44fa-54e3-46ad-a85f-5491491fafc7.png",
+        "media_type_2": "image",
+        "stack_media_on_mobile": false,
+        "custom_mobile_media": false,
+        "media_type_1_mobile": "image",
+        "media_type_2_mobile": "image",
+        "link": "",
+        "open_in_new_tab": false,
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "large",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-3",
+        "toggle_overlay": true,
+        "overlay_color": "#00000026",
+        "overlay_style": "gradient",
+        "gradient_direction": "to top",
+        "blurred_reflection": false,
+        "reflection_opacity": 75,
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
+    },
     "pawely_hero_LkfNBq": {
       "type": "pawely-hero",
+      "disabled": true,
       "name": "Pawely Hero",
       "settings": {
         "eyebrow": "Bath Time, Made Easier",
@@ -18,35 +126,6 @@
         "description": "Rinse, scrub, and wash your dog in one simple tool. Turns any garden hose into a powerful pet shower.",
         "cta_label": "Shop Now",
         "cta_link": ""
-      }
-    },
-
-    "pawely_faq_JKbDcx": {
-      "type": "pawely-faq",
-      "name": "Pawely FAQ",
-      "settings": {}
-    },
-    "pawely_product_LmDrgb": {
-      "type": "pawely-product",
-      "name": "Pawely Product",
-      "settings": {
-        "product": "",
-        "short_description": "Turn any hose into a professional pet shower. Rinse, scrub, and clean your dog in minutes — at home, anytime."
-      }
-    },
-    "pawely_reviews_QCCaQH": {
-      "type": "pawely-reviews",
-      "name": "Pawely Reviews",
-      "settings": {
-        "heading": "Real dogs. Real happy owners."
-      }
-    },
-    "pawely_how_it_works_n6U7Kh": {
-      "type": "pawely-how-it-works",
-      "name": "Pawely How It Works",
-      "settings": {
-        "heading": "How it works",
-        "subheading": "Clean in 3 simple steps."
       }
     },
     "pawely_transformation_P7kMEq": {
@@ -58,13 +137,42 @@
         "right_heading": "...to magnificent.",
         "right_subtext": "The same dog. A whole new vibe."
       }
+    },
+    "pawely_product_LmDrgb": {
+      "type": "pawely-product",
+      "name": "Pawely Product",
+      "settings": {
+        "product": "",
+        "short_description": "Turn any hose into a professional pet shower. Rinse, scrub, and clean your dog in minutes — at home, anytime."
+      }
+    },
+    "pawely_how_it_works_n6U7Kh": {
+      "type": "pawely-how-it-works",
+      "name": "Pawely How It Works",
+      "settings": {
+        "heading": "How it works",
+        "subheading": "Clean in 3 simple steps."
+      }
+    },
+    "pawely_reviews_QCCaQH": {
+      "type": "pawely-reviews",
+      "name": "Pawely Reviews",
+      "settings": {
+        "heading": "Real dogs. Real happy owners."
+      }
+    },
+    "pawely_faq_JKbDcx": {
+      "type": "pawely-faq",
+      "name": "Pawely FAQ",
+      "settings": {}
     }
   },
   "order": [
+    "hero_HMWiYa",
     "pawely_hero_LkfNBq",
-    "pawely_how_it_works_n6U7Kh",
     "pawely_transformation_P7kMEq",
     "pawely_product_LmDrgb",
+    "pawely_how_it_works_n6U7Kh",
     "pawely_reviews_QCCaQH",
     "pawely_faq_JKbDcx"
   ]
