@@ -1,0 +1,77 @@
+{% comment %}
+  PaWash SEO Schema (JSON-LD)
+{% endcomment %}
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "PaWash™",
+  "url": "{{ shop.url }}",
+  "logo": "https://cdn.shopify.com/s/files/1/0724/1878/7547/files/Screenshot_2024-11-20_at_23.49.19.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "info@pawash.store",
+    "contactType": "Customer Service"
+  }
+}
+</script>
+
+{% assign main_product = collections.all.products.first %}
+{% if main_product %}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@type": "Product",
+  "name": "{{ main_product.title | escape | default: 'PaWash™ Dog Shower Sprayer' }}",
+  "image": [
+    "{{ main_product.featured_image | image_url: width: 800 }}"
+  ],
+  "description": "The PaWash™ dog shower sprayer. Rinse, scrub, and wash your dog in one simple tool. Turns any garden hose into a powerful pet shower.",
+  "brand": {
+    "@type": "Brand",
+    "name": "PaWash™"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "{{ shop.url }}{{ main_product.url }}",
+    "priceCurrency": "{{ cart.currency.iso_code }}",
+    "price": "{{ main_product.price | divided_by: 100.00 }}",
+    "availability": "{% if main_product.available %}http://schema.org/InStock{% else %}http://schema.org/OutOfStock{% endif %}",
+    "seller": {
+      "@type": "Organization",
+      "name": "PaWash™"
+    }
+  }
+}
+</script>
+{% endif %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "How does the PaWash sprayer work?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The PaWash connects directly to any standard garden hose. It combines water pressure with a built-in soap dispenser and gentle silicone scrubbing bristles to clean your dog quickly and easily."
+    }
+  }, {
+    "@type": "Question",
+    "name": "Is it safe for my dog?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes! The water pressure is fully adjustable, and the silicone bristles are incredibly soft, providing a gentle massage that dogs love."
+    }
+  }, {
+    "@type": "Question",
+    "name": "How long does shipping take?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Shipping takes 7-12 days to all supported countries."
+    }
+  }]
+}
+</script>

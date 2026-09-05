@@ -16,6 +16,9 @@
         type="image/png"
         href="{{ settings.favicon | image_url: width: 32, height: 32 }}"
       >
+    {%- else -%}
+      <!-- Custom PaWash Favicon -->
+      <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%232A5934' d='M12 2C8 2 4 8.5 4 13c0 4.4 3.6 8 8 8s8-3.6 8-8c0-4.5-4-11-8-11z'/%3E%3Cpath fill='%23FFFFFF' d='M12 18.5c-3.2 0-5.8-2.2-5.8-5 0-2.2 1.8-3.5 3.5-3.5 1.2 0 1.9.6 2.3.6.4 0 1.1-.6 2.3-.6 1.7 0 3.5 1.3 3.5 3.5 0 2.8-2.6 5-5.8 5z'/%3E%3Ccircle fill='%23FFFFFF' cx='7' cy='11.5' r='2'/%3E%3Ccircle fill='%23FFFFFF' cx='17' cy='11.5' r='2'/%3E%3Ccircle fill='%23FFFFFF' cx='10.5' cy='8' r='2'/%3E%3Ccircle fill='%23FFFFFF' cx='13.5' cy='8' r='2'/%3E%3C/svg%3E">
     {%- endif -%}
 
     {% # theme-check-disable RemoteAsset %}
@@ -30,6 +33,7 @@
     {% endif %}
 
     {%- render 'meta-tags' -%}
+    {%- render 'seo-schema' -%}
     {%- render 'stylesheets' -%}
     {%- render 'fonts' -%}
     {%- render 'scripts' -%}
