@@ -18,25 +18,8 @@
 <a class="hover:text-brand-green transition" href="#faq">FAQ</a>
 </nav>
 <!-- Right Action Icons -->
-<div class="flex items-center space-x-3 sm:space-x-5 text-stone-800">
+<div class="flex items-center space-x-5 text-stone-800">
 
-  <!-- Country Selector Dropdown -->
-  <div class="relative" id="pawash-country-selector">
-    <button type="button" class="flex items-center gap-1.5 text-xs font-semibold hover:text-brand-green transition" id="pawash-active-country-btn">
-      <span id="pawash-active-flag">🇺🇸</span>
-      <span id="pawash-active-currency" class="hidden sm:inline">USD</span>
-      <svg class="w-3 h-3 text-stone-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-    </button>
-    
-    <div id="pawash-country-menu" class="absolute right-0 top-full mt-2 w-56 bg-white border border-stone-200 rounded-xl shadow-xl opacity-0 invisible transform scale-95 transition-all duration-200 z-50">
-      {% form 'localization', id: 'pawash-localization-form' %}
-        <input type="hidden" name="country_code" id="pawash-country-input" value="{{ localization.country.iso_code }}">
-        <div class="p-2 max-h-72 overflow-y-auto flex flex-col gap-1 text-xs" id="pawash-country-list">
-          <!-- Populated by JS -->
-        </div>
-      {% endform %}
-    </div>
-  </div>
 <a aria-label="Shopping Cart" class="hover:text-brand-green transition relative" href="{{ routes.cart_url }}">
 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
 <path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -49,118 +32,6 @@
 </div>
 </header>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const COUNTRIES = [
-      { code: 'AU', name: 'Australia', flag: '🇦🇺', currency: 'AUD' },
-      { code: 'AT', name: 'Austria', flag: '🇦🇹', currency: 'EUR' },
-      { code: 'BE', name: 'Belgium', flag: '🇧🇪', currency: 'EUR' },
-      { code: 'CA', name: 'Canada', flag: '🇨🇦', currency: 'CAD' },
-      { code: 'DK', name: 'Denmark', flag: '🇩🇰', currency: 'DKK' },
-      { code: 'FI', name: 'Finland', flag: '🇫🇮', currency: 'EUR' },
-      { code: 'FR', name: 'France', flag: '🇫🇷', currency: 'EUR' },
-      { code: 'DE', name: 'Germany', flag: '🇩🇪', currency: 'EUR' },
-      { code: 'IE', name: 'Ireland', flag: '🇮🇪', currency: 'EUR' },
-      { code: 'IT', name: 'Italy', flag: '🇮🇹', currency: 'EUR' },
-      { code: 'LU', name: 'Luxembourg', flag: '🇱🇺', currency: 'EUR' },
-      { code: 'NL', name: 'Netherlands', flag: '🇳🇱', currency: 'EUR' },
-      { code: 'NO', name: 'Norway', flag: '🇳🇴', currency: 'NOK' },
-      { code: 'ES', name: 'Spain', flag: '🇪🇸', currency: 'EUR' },
-      { code: 'SE', name: 'Sweden', flag: '🇸🇪', currency: 'SEK' },
-      { code: 'CH', name: 'Switzerland', flag: '🇨🇭', currency: 'CHF' },
-      { code: 'AE', name: 'United Arab Emirates', flag: '🇦🇪', currency: 'AED' },
-      { code: 'GB', name: 'United Kingdom', flag: '🇬🇧', currency: 'GBP' },
-      { code: 'US', name: 'United States', flag: '🇺🇸', currency: 'USD' }
-    ];
-
-    const currentShopifyCode = '{{ localization.country.iso_code }}' || 'US';
-    const form = document.getElementById('pawash-localization-form');
-    const input = document.getElementById('pawash-country-input');
-    const list = document.getElementById('pawash-country-list');
-    const btn = document.getElementById('pawash-active-country-btn');
-    const menu = document.getElementById('pawash-country-menu');
-    const activeFlag = document.getElementById('pawash-active-flag');
-    const activeCurr = document.getElementById('pawash-active-currency');
-
-    if (!form || !list || !btn) return;
-
-    // Render list
-    let matched = false;
-    COUNTRIES.forEach(c => {
-      const isSelected = c.code === currentShopifyCode;
-      if (isSelected) matched = true;
-      const btnHTML = document.createElement('button');
-      btnHTML.type = 'button';
-      btnHTML.className = `w-full text-left flex items-center justify-between px-3 py-2 rounded-lg hover:bg-stone-100 transition ${isSelected ? 'bg-stone-50 font-bold' : ''}`;
-      btnHTML.innerHTML = `<span class="flex items-center gap-2"><span class="text-base">${c.flag}</span> ${c.name}</span><span class="text-stone-400">${c.currency}</span>`;
-      btnHTML.addEventListener('click', () => {
-        input.value = c.code;
-        localStorage.setItem('pawash_country_set', 'true');
-        form.submit();
-      });
-      list.appendChild(btnHTML);
-      
-      if (isSelected) {
-        activeFlag.innerText = c.flag;
-        activeCurr.innerText = c.currency;
-      }
-    });
-
-    if (!matched) {
-      activeFlag.innerText = '🇺🇸';
-      activeCurr.innerText = 'USD';
-    }
-
-    // Toggle menu
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isHidden = menu.classList.contains('invisible');
-      if (isHidden) {
-        menu.classList.remove('invisible', 'opacity-0', 'scale-95');
-        menu.classList.add('opacity-100', 'scale-100');
-      } else {
-        menu.classList.add('opacity-0', 'scale-95');
-        menu.classList.remove('opacity-100', 'scale-100');
-        setTimeout(() => menu.classList.add('invisible'), 200);
-      }
-    });
-
-    // Close on outside click
-    document.addEventListener('click', (e) => {
-      if (!menu.contains(e.target) && !btn.contains(e.target)) {
-        menu.classList.add('opacity-0', 'scale-95');
-        menu.classList.remove('opacity-100', 'scale-100');
-        setTimeout(() => menu.classList.add('invisible'), 200);
-      }
-    });
-
-    // Auto-detect logic
-    const hasSetCountry = localStorage.getItem('pawash_country_set');
-    if (!hasSetCountry) {
-      fetch('https://ipapi.co/json/')
-        .then(res => res.json())
-        .then(data => {
-          if (data && data.country_code) {
-            let targetCode = data.country_code;
-            const isValid = COUNTRIES.some(c => c.code === targetCode);
-            if (!isValid) targetCode = 'US';
-            
-            if (targetCode !== currentShopifyCode) {
-              localStorage.setItem('pawash_country_set', 'true');
-              input.value = targetCode;
-              form.submit();
-            } else {
-              localStorage.setItem('pawash_country_set', 'true');
-            }
-          }
-        })
-        .catch(err => {
-          console.log('GeoIP fail', err);
-          localStorage.setItem('pawash_country_set', 'true');
-        });
-    }
-  });
-</script>
 {% schema %}
 {
   "name": "PaWash Header",
