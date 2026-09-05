@@ -1,4 +1,12 @@
 <section class="py-10 sm:py-12 bg-white text-stone-900 overflow-hidden relative">
+<style>
+  .pawely-ba-card { width: 140px; height: 168px; }
+  .pawely-ba-arrow { transform: rotate(0deg); width: 1.5rem; height: 1.5rem; }
+  @media (min-width: 640px) {
+    .pawely-ba-card { width: 224px; height: 256px; }
+    .pawely-ba-arrow { width: 2.5rem; height: 2.5rem; }
+  }
+</style>
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="!grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 <!-- Left Caption -->
@@ -7,22 +15,22 @@
 <p class="text-stone-600 text-xs sm:text-sm">{{ section.settings.left_subtext }}</p>
 </div>
 <!-- Center Before / After Comparison -->
-<div class="lg:col-span-6 flex flex-col sm:flex-row items-center justify-center gap-4 relative">
+<div class="lg:col-span-6 flex flex-row items-center justify-center gap-3 relative">
 <!-- Before Card -->
-<div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-stone-700 w-56 h-64 flex-shrink-0">
+<div class="pawely-ba-card relative rounded-2xl overflow-hidden shadow-2xl border-2 border-stone-700 flex-shrink-0">
 <img width="800" height="800" alt="Muddy dog before wash" class="w-full h-full object-cover filter contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALvnr4PTZRAuP3DUhU6cRaHn1bs0UNHveGwQXi6dTu8m1OfmYkixzui1sey1pNhzZJ2skf0hy-fXk1fXSh-g0pWI_d6JCwtojJrCqr5BpH7Mx_iiaqBagGwGwByqj_rxUcWDVlk7KFNW5b1UmH5kerbcnRA8pf2hXgUEbtdNnI_lk5Mhx0-PLGpq4DkOyThhr6GSLsOC2v3S5IYuZES0S9IGNle8xe1kU2bIpg0pJtf1OnBis4gPEhEw">
 <span class="absolute top-3 left-3 bg-brand-green/90 backdrop-blur-xs text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded">
                 BEFORE
               </span>
 </div>
 <!-- Green Transition Arrow -->
-<div class="flex items-center justify-center text-brand-green transform rotate-90 sm:rotate-0 my-2 sm:my-0">
-<svg class="w-10 h-10 filter drop-shadow" fill="currentColor" viewBox="0 0 24 24">
+<div class="flex items-center justify-center text-brand-green">
+<svg class="pawely-ba-arrow filter drop-shadow" fill="currentColor" viewBox="0 0 24 24">
 <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
 </svg>
 </div>
 <!-- After Card -->
-<div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-brand-accent/50 w-56 h-64 flex-shrink-0">
+<div class="pawely-ba-card relative rounded-2xl overflow-hidden shadow-2xl border-2 border-brand-accent/50 flex-shrink-0">
 <img width="800" height="800" alt="Clean fluffy dog after wash" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4EXx5GTMgRb_p4n3TY5uWxalI4k8P-ZSjpyYLEWuVPDen3k7WOy1a-Ql5gCocnW402t4n7sxUp8unmPC7lfRw0SxwhoMFalz-BX2QYJ_edb-H6mAxfRDKlBmPtGcE56xcOAvQCCUyFL_spoClbyNEAB8kUzIxc5q5se1YhdloR5A-_y_5KTal540UKw5k-8PjfMjDM2eqNqETvctjLDoTvdh5Bt0b6wRo5ELr2UmQ1BunnKDfBm07og">
 <span class="absolute top-3 right-3 bg-brand-accent text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded shadow">
                 AFTER
