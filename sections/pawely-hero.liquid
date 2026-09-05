@@ -1,4 +1,8 @@
 <section class="relative overflow-hidden bg-brand-cream pt-8 pb-10 lg:pt-14 lg:pb-20 border-b border-stone-200/50">
+<style>
+  @media (max-width: 639px) { #pawely-hero-img { display: none !important; } }
+  @media (min-width: 640px) { #pawely-hero-img { display: flex !important; } }
+</style>
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="!grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
 <!-- Left Hero Content -->
@@ -42,7 +46,7 @@
 </div>
 </div>
 <!-- Right Hero Image Showcase -->
-<div class="lg:col-span-6 relative mt-2 lg:mt-0 hidden sm:flex justify-center items-center">
+<div id="pawely-hero-img" class="lg:col-span-6 relative mt-2 lg:mt-0 justify-center items-center">
 <div class="relative w-full max-w-lg aspect-square lg:aspect-[4/3] rounded-3xl overflow-hidden shadow-xl bg-stone-100">
 {% if section.settings.hero_image != blank %}
   <img width="800" height="800" alt="Happy Golden Retriever getting washed outdoors with fresh water spray" class="w-full h-full object-cover" src="{{ section.settings.hero_image | image_url: width: 1200 }}">
