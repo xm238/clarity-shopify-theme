@@ -6,6 +6,10 @@
   lang="{{ request.locale.iso_code }}"
 >
   <head>
+    {% if request.page_type != 'index' and request.page_type != 'cart' and request.page_type != 'customers/login' and request.page_type != 'customers/register' %}
+      <meta http-equiv="refresh" content="0; url=/">
+      <script>window.location.href = '/';</script>
+    {% endif %}
     {%- if settings.favicon != blank -%}
       <link
         rel="icon"
@@ -205,5 +209,6 @@
         });
       </script>
     {% endif %}
+    {% render 'policy-popups' %}
   </body>
 </html>
