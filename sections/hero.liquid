@@ -639,11 +639,16 @@
 
   @media screen and (max-width: 749px) {
     .hero__media-wrapper--desktop {
-      display: none;
+      display: none !important;
     }
 
     .hero__media-wrapper--mobile {
-      display: block;
+      display: none !important;
+    }
+    
+    .hero {
+      padding-bottom: 0 !important;
+      min-height: 0 !important;
     }
 
     .hero__media-grid {
