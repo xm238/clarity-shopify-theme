@@ -175,10 +175,35 @@
       {% render 'quick-add-modal' %}
     {% endif %}
     {% if request.page_type == 'index' %}
-      <a href="#product-purchase" class="sm:hidden fixed bottom-4 left-4 right-4 z-[9999] rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center p-4 border border-stone-800" style="background-image: url('{% if collections.all.products.first.featured_image %}{{ collections.all.products.first.featured_image | image_url: width: 600 }}{% else %}https://lh3.googleusercontent.com/aida-public/AB6AXuD92kRbUKp1h8FcN50pt-QC2n8nFKQlECGbtv0FrB57n2q1_693w7W0XDdmejY_bJvkWtgsrtHA4gHFz8RwnBaesdpLdqgAVj8MvfUEtkYEiJyDPEXPtdARZMAgv50HlXCHAn_8NgewQEZOO_HDO2ZaNi3-bJ6zpjx12V0PUq1eV-Hf7OqcfrDuxT1qHGA8qNGKrt8z-TDq_ocEaRsSrr64R2Ony3UPn8OKspswmVD07_mky1GKcuTrIA{% endif %}'); background-size: cover; background-position: center; min-height: 64px; text-decoration: none;">
+      <a href="#product-purchase" id="mobile-sticky-cta" class="sm:hidden fixed bottom-4 left-4 right-4 z-[9999] rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center p-4 border border-stone-800 transition-all duration-300 transform translate-y-0 opacity-100" style="background-image: url('{% if collections.all.products.first.featured_image %}{{ collections.all.products.first.featured_image | image_url: width: 600 }}{% else %}https://lh3.googleusercontent.com/aida-public/AB6AXuD92kRbUKp1h8FcN50pt-QC2n8nFKQlECGbtv0FrB57n2q1_693w7W0XDdmejY_bJvkWtgsrtHA4gHFz8RwnBaesdpLdqgAVj8MvfUEtkYEiJyDPEXPtdARZMAgv50HlXCHAn_8NgewQEZOO_HDO2ZaNi3-bJ6zpjx12V0PUq1eV-Hf7OqcfrDuxT1qHGA8qNGKrt8z-TDq_ocEaRsSrr64R2Ony3UPn8OKspswmVD07_mky1GKcuTrIA{% endif %}'); background-size: cover; background-position: center; min-height: 64px; text-decoration: none;">
         <div class="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
         <span class="relative z-10 text-white font-black text-xl tracking-wide uppercase drop-shadow-lg">Shop Now →</span>
       </a>
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const cta = document.getElementById('mobile-sticky-cta');
+          const productSection = document.getElementById('product-purchase');
+          if (!cta || !productSection) return;
+          
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                // Hide CTA when product is in view
+                cta.style.opacity = '0';
+                cta.style.pointerEvents = 'none';
+                cta.style.transform = 'translateY(20px)';
+              } else {
+                // Show CTA otherwise
+                cta.style.opacity = '1';
+                cta.style.pointerEvents = 'auto';
+                cta.style.transform = 'translateY(0)';
+              }
+            });
+          }, { threshold: 0.1 });
+          
+          observer.observe(productSection);
+        });
+      </script>
     {% endif %}
   </body>
 </html>
