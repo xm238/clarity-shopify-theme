@@ -4,28 +4,35 @@
 <!-- Image Gallery Column (Thumbnails + Main) -->
 <div class="lg:col-span-5 flex flex-col gap-4">
 <!-- Big Main View -->
-<div class="relative w-full rounded-3xl bg-stone-50 border border-stone-200/80 p-6 flex items-center justify-center overflow-hidden min-h-[360px] sm:min-h-[440px]">
-{% if featured_product != blank and featured_product.featured_image != blank %}
-  <img width="800" height="800" id="pawely-main-img" alt="{{ featured_product.title | escape }}" class="w-full max-h-[380px] object-contain drop-shadow-xl" src="{{ featured_product.featured_image | image_url: width: 800 }}">
-{% else %}
-  <img width="800" height="800" id="pawely-main-img" alt="Pawely Dog Shower Sprayer Main Showcase" class="w-full max-h-[380px] object-contain drop-shadow-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD92kRbUKp1h8FcN50pt-QC2n8nFKQlECGbtv0FrB57n2q1_693w7W0XDdmejY_bJvkWtgsrtHA4gHFz8RwnBaesdpLdqgAVj8MvfUEtkYEiJyDPEXPtdARZMAgv50HlXCHAn_8NgewQEZOO_HDO2ZaNi3-bJ6zpjx12V0PUq1eV-Hf7OqcfrDuxT1qHGA8qNGKrt8z-TDq_ocEaRsSrr64R2Ony3UPn8OKspswmVD07_mky1GKcuTrIA">
-{% endif %}
+<div class="relative w-full rounded-3xl bg-stone-50 border border-stone-200/80 overflow-hidden min-h-[360px] sm:min-h-[440px] flex items-center justify-center p-0">
+  <video id="pawely-main-video" class="absolute inset-0 w-full h-full object-cover z-10" src="https://cdn.shopify.com/videos/c/o/v/8868882a917a4370b069011967242398.mp4" controls muted playsinline preload="metadata"></video>
+  
+  {% if featured_product != blank and featured_product.featured_image != blank %}
+    <img width="800" height="800" id="pawely-main-img" alt="{{ featured_product.title | escape }}" class="hidden absolute inset-0 w-full h-full object-contain drop-shadow-xl z-20 bg-stone-50 p-6" src="{{ featured_product.featured_image | image_url: width: 800 }}">
+  {% else %}
+    <img width="800" height="800" id="pawely-main-img" alt="Pawely Dog Shower Sprayer Main Showcase" class="hidden absolute inset-0 w-full h-full object-contain drop-shadow-xl z-20 bg-stone-50 p-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD92kRbUKp1h8FcN50pt-QC2n8nFKQlECGbtv0FrB57n2q1_693w7W0XDdmejY_bJvkWtgsrtHA4gHFz8RwnBaesdpLdqgAVj8MvfUEtkYEiJyDPEXPtdARZMAgv50HlXCHAn_8NgewQEZOO_HDO2ZaNi3-bJ6zpjx12V0PUq1eV-Hf7OqcfrDuxT1qHGA8qNGKrt8z-TDq_ocEaRsSrr64R2Ony3UPn8OKspswmVD07_mky1GKcuTrIA">
+  {% endif %}
 </div>
 
 <!-- Thumbnail Stack -->
 <div class="flex flex-row gap-3 justify-center sm:justify-start overflow-x-auto pb-2">
+  <button class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl border border-brand-green overflow-hidden flex-shrink-0 p-1 bg-stone-50 pawely-thumb-vid" type="button" title="View Video">
+    <div class="w-full h-full bg-stone-200 rounded-lg flex items-center justify-center text-stone-500 hover:bg-stone-300 transition">
+      <svg class="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M4.5 3.5v13L16.5 10l-12-6.5z"></path></svg>
+    </div>
+  </button>
 {% assign featured_product = section.settings.product %}
 {% if featured_product == blank %}
   {% assign featured_product = collections.all.products.first %}
 {% endif %}
 {% if featured_product != blank and featured_product.images.size > 0 %}
   {% for image in featured_product.images limit: 4 %}
-    <button class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl border {% if forloop.first %}border-brand-green{% else %}border-stone-200 hover:border-stone-400{% endif %} overflow-hidden flex-shrink-0 p-1 bg-stone-50 pawely-thumb" type="button" data-src="{{ image | image_url: width: 800 }}">
+    <button class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl border border-stone-200 hover:border-stone-400 overflow-hidden flex-shrink-0 p-1 bg-stone-50 pawely-thumb" type="button" data-src="{{ image | image_url: width: 800 }}">
       <img width="800" height="800" alt="{{ image.alt | escape }}" class="w-full h-full object-cover rounded-lg" src="{{ image | image_url: width: 150 }}">
     </button>
   {% endfor %}
 {% else %}
-  <button class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl border border-brand-green overflow-hidden flex-shrink-0 p-1 bg-stone-50 pawely-thumb" type="button" data-src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0c58EDHRogjBBa-iWGdNFScIn4qh7Z01z6Xpl6-v3t8C3Chp8-zecWWLCLUB9buojwethqJoHi4xhSmEek6P5VFNGecPItoblrX_rcWMipLjs94kMtanO-iY-FvxtadHkLAVf7Anga4qpnt1Mq7ntLoBOtQtC57YFsw5cXsDoJy4Xw4m4CsCtt9__wl2cWuW2M7T-4GCdkeMMGdT2fUcotf5Fwv3csTthoAwNba6OQ0LHezSyWd0L7A">
+  <button class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl border border-stone-200 hover:border-stone-400 overflow-hidden flex-shrink-0 p-1 bg-stone-50 pawely-thumb" type="button" data-src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0c58EDHRogjBBa-iWGdNFScIn4qh7Z01z6Xpl6-v3t8C3Chp8-zecWWLCLUB9buojwethqJoHi4xhSmEek6P5VFNGecPItoblrX_rcWMipLjs94kMtanO-iY-FvxtadHkLAVf7Anga4qpnt1Mq7ntLoBOtQtC57YFsw5cXsDoJy4Xw4m4CsCtt9__wl2cWuW2M7T-4GCdkeMMGdT2fUcotf5Fwv3csTthoAwNba6OQ0LHezSyWd0L7A">
     <img width="800" height="800" alt="Thumb 1" class="w-full h-full object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0c58EDHRogjBBa-iWGdNFScIn4qh7Z01z6Xpl6-v3t8C3Chp8-zecWWLCLUB9buojwethqJoHi4xhSmEek6P5VFNGecPItoblrX_rcWMipLjs94kMtanO-iY-FvxtadHkLAVf7Anga4qpnt1Mq7ntLoBOtQtC57YFsw5cXsDoJy4Xw4m4CsCtt9__wl2cWuW2M7T-4GCdkeMMGdT2fUcotf5Fwv3csTthoAwNba6OQ0LHezSyWd0L7A">
   </button>
   <button class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl border border-stone-200 hover:border-stone-400 overflow-hidden flex-shrink-0 p-1 bg-stone-50 pawely-thumb" type="button" data-src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdX9qxzgX8vPY9bKwxpASWQOXn5jPDlS8NgWX-m1vrOl2DrCpDq95P8XcUM0YN2s3h2KUiYLMsMZr2M3o3CcxFf3R484kRpgaDfotyvoskKrCZaYWHI8RxIe3mI479TecsBI1F_Mj4vmGyynwpvnhM92bFVHh82m1kfNrlgZs0ejB1XzDW2isVzczwcAyhWBi6Pie3eKvls6XFcgh1RGS3QWh68zKk8Xy2Cr-wcY4I8xjJFb7OTAlQjw">
@@ -38,10 +45,6 @@
     <img width="800" height="800" alt="Thumb 4" class="w-full h-full object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFbPbVvPuNtQb_IGYV2HItLJ6DP9b8QMBa4M1PxqYHw3USeC1m2WgBQhXMrMMRUy_S__ijlNNJbL-5Qcrivh16kFENhOyGZTpWq5ryn2fX2teeqqDwbrUhPlb1ucPWXnm5sNF9KCQKCuV4PCStuw_6lap55Kalgr3Z5AUDOxm6f8eJ37NL_Izfu-_g138wzges5GBeX9FVJirdxPyPivVLdkC3wpqhcghfdp0VEIfEWkZSpZCObHmIJw">
   </button>
 {% endif %}
-</div>
-<!-- Product Video -->
-<div class="mt-2 rounded-3xl overflow-hidden shadow-sm border border-stone-200/80 bg-stone-50 relative aspect-[4/3] sm:aspect-video flex items-center justify-center">
-  <video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline src="https://cdn.shopify.com/videos/c/o/v/8868882a917a4370b069011967242398.mp4"></video>
 </div>
 </div>
 <!-- Product Details & Form -->
@@ -196,24 +199,71 @@
       var imgSrc = pawelyVariantImages[this.value];
       if (imgSrc) {
         var mainImg = document.getElementById('pawely-main-img');
-        if (mainImg) mainImg.src = imgSrc;
+        var mainVid = document.getElementById('pawely-main-video');
+        if (mainImg) { mainImg.src = imgSrc; mainImg.classList.remove('hidden'); }
+        if (mainVid) { mainVid.classList.add('hidden'); mainVid.pause(); }
       }
     });
   }
 
-  // Thumbnail click → swap main image
+  // Helper to clear border on all thumbs
+  function resetThumbBorders() {
+    document.querySelectorAll('.pawely-thumb, .pawely-thumb-vid').forEach(function(b) {
+      b.classList.remove('border-brand-green');
+      b.classList.add('border-stone-200');
+    });
+  }
+
+  // Thumbnail click (image) → swap main image
   document.querySelectorAll('.pawely-thumb').forEach(function(btn) {
     btn.addEventListener('click', function() {
       var src = btn.getAttribute('data-src');
       var mainImg = document.getElementById('pawely-main-img');
-      if (mainImg && src) mainImg.src = src;
-      document.querySelectorAll('.pawely-thumb').forEach(function(b) {
-        b.classList.remove('border-brand-green');
-        b.classList.add('border-stone-200');
-      });
+      var mainVid = document.getElementById('pawely-main-video');
+      
+      if (mainImg && src) { mainImg.src = src; mainImg.classList.remove('hidden'); }
+      if (mainVid) { mainVid.classList.add('hidden'); mainVid.pause(); }
+      
+      resetThumbBorders();
       btn.classList.remove('border-stone-200');
       btn.classList.add('border-brand-green');
     });
+  });
+
+  // Thumbnail click (video) → show main video
+  var vidThumb = document.querySelector('.pawely-thumb-vid');
+  if (vidThumb) {
+    vidThumb.addEventListener('click', function() {
+      var mainImg = document.getElementById('pawely-main-img');
+      var mainVid = document.getElementById('pawely-main-video');
+      
+      if (mainImg) { mainImg.classList.add('hidden'); }
+      if (mainVid) { mainVid.classList.remove('hidden'); mainVid.play(); }
+      
+      resetThumbBorders();
+      vidThumb.classList.remove('border-stone-200');
+      vidThumb.classList.add('border-brand-green');
+    });
+  }
+
+  // Auto-play video on scroll (Intersection Observer)
+  document.addEventListener('DOMContentLoaded', function() {
+    var mainVid = document.getElementById('pawely-main-video');
+    if (!mainVid) return;
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        // Only autoplay if it's currently visible (not hidden by an image thumb click)
+        if (entry.isIntersecting && !mainVid.classList.contains('hidden')) {
+          var playPromise = mainVid.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(function(e) { console.log('Autoplay prevented', e); });
+          }
+        } else {
+          mainVid.pause();
+        }
+      });
+    }, { threshold: 0.5 });
+    observer.observe(mainVid);
   });
 </script>
 {% endif %}
