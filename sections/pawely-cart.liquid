@@ -1,0 +1,251 @@
+<style>
+  .pawely-cart-wrap { background: #FAF8F5; min-height: 60vh; }
+  .pawely-cart-inner { max-width: 1200px; margin: 0 auto; padding: 40px 20px 80px; }
+  .pawely-cart-heading { font-size: 2rem; font-weight: 900; color: #161C16; letter-spacing: -0.03em; margin-bottom: 4px; }
+  .pawely-cart-subheading { font-size: 0.85rem; color: #78716c; font-weight: 500; margin-bottom: 36px; }
+  .pawely-cart-layout { display: grid; grid-template-columns: 1fr; gap: 32px; }
+  @media (min-width: 900px) {
+    .pawely-cart-layout { grid-template-columns: 1fr 380px; gap: 48px; align-items: start; }
+  }
+
+  /* Items */
+  .pawely-cart-items { display: flex; flex-direction: column; gap: 0; }
+  .pawely-cart-item { display: flex; gap: 16px; padding: 20px 0; border-bottom: 1px solid #E2DFD7; align-items: flex-start; }
+  .pawely-cart-item:first-child { border-top: 1px solid #E2DFD7; }
+  .pawely-cart-item__img { width: 88px; height: 88px; border-radius: 14px; object-fit: cover; background: #fff; border: 1px solid #E2DFD7; flex-shrink: 0; }
+  .pawely-cart-item__img-placeholder { width: 88px; height: 88px; border-radius: 14px; background: #f0ede8; border: 1px solid #E2DFD7; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+  .pawely-cart-item__body { flex: 1; min-width: 0; }
+  .pawely-cart-item__title { font-size: 0.95rem; font-weight: 700; color: #161C16; margin-bottom: 3px; line-height: 1.3; }
+  .pawely-cart-item__variant { font-size: 0.78rem; color: #78716c; margin-bottom: 8px; }
+  .pawely-cart-item__price { font-size: 1rem; font-weight: 800; color: #1E3A2B; margin-bottom: 12px; }
+  .pawely-cart-item__actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+  /* Qty stepper */
+  .pawely-qty { display: flex; align-items: center; border: 1px solid #D8D4CA; border-radius: 10px; overflow: hidden; background: #fff; }
+  .pawely-qty button { width: 32px; height: 32px; border: none; background: transparent; font-size: 1rem; font-weight: 700; color: #2B302B; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .pawely-qty button:hover { background: #f0ede8; }
+  .pawely-qty input { width: 36px; text-align: center; border: none; background: transparent; font-size: 0.85rem; font-weight: 700; color: #161C16; padding: 0; -moz-appearance: textfield; }
+  .pawely-qty input::-webkit-outer-spin-button,
+  .pawely-qty input::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+  /* Remove btn */
+  .pawely-cart-item__remove { font-size: 0.75rem; color: #a8a29e; font-weight: 500; cursor: pointer; background: none; border: none; padding: 0; text-decoration: underline; text-underline-offset: 2px; }
+  .pawely-cart-item__remove:hover { color: #ef4444; }
+
+  /* Summary card */
+  .pawely-cart-summary { background: #fff; border: 1px solid #E2DFD7; border-radius: 20px; padding: 28px; position: sticky; top: 80px; }
+  .pawely-cart-summary__title { font-size: 1.1rem; font-weight: 800; color: #161C16; margin-bottom: 20px; letter-spacing: -0.01em; }
+  .pawely-cart-summary__row { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: #78716c; margin-bottom: 10px; }
+  .pawely-cart-summary__row--total { font-size: 1.05rem; font-weight: 800; color: #161C16; margin-top: 16px; padding-top: 16px; border-top: 1px solid #E2DFD7; margin-bottom: 0; }
+  .pawely-cart-summary__note { font-size: 0.75rem; color: #a8a29e; text-align: center; margin-top: 12px; margin-bottom: 0; }
+  .pawely-cart-summary__checkout { display: flex; align-items: center; justify-content: center; gap-8px; width: 100%; padding: 15px; border-radius: 12px; border: none; background: #1E3A2B; color: #fff; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 20px; text-decoration: none; transition: opacity 0.15s; }
+  .pawely-cart-summary__checkout:hover { opacity: 0.88; color: #fff; }
+  .pawely-cart-summary__continue { display: flex; align-items: center; justify-content: center; width: 100%; padding: 13px; border-radius: 12px; border: 1.5px solid #D8D4CA; background: transparent; color: #2B302B; font-size: 0.9rem; font-weight: 600; cursor: pointer; margin-top: 10px; text-decoration: none; transition: background 0.15s; }
+  .pawely-cart-summary__continue:hover { background: #f0ede8; color: #2B302B; }
+
+  /* Guarantees strip */
+  .pawely-cart-guarantees { display: flex; gap: 16px; justify-content: center; margin-top: 28px; flex-wrap: wrap; }
+  .pawely-cart-guarantee { display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 0.72rem; color: #78716c; font-weight: 500; text-align: center; }
+  .pawely-cart-guarantee svg { color: #1E3A2B; }
+
+  /* Empty state */
+  .pawely-cart-empty { text-align: center; padding: 80px 20px; }
+  .pawely-cart-empty__icon { width: 64px; height: 64px; margin: 0 auto 20px; color: #D8D4CA; }
+  .pawely-cart-empty__title { font-size: 1.5rem; font-weight: 800; color: #161C16; margin-bottom: 8px; }
+  .pawely-cart-empty__text { font-size: 0.9rem; color: #78716c; margin-bottom: 28px; }
+  .pawely-cart-empty__btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 36px; border-radius: 12px; background: #1E3A2B; color: #fff; font-weight: 700; font-size: 0.95rem; text-decoration: none; transition: opacity 0.15s; }
+  .pawely-cart-empty__btn:hover { opacity: 0.88; color: #fff; }
+
+  /* Promo code */
+  .pawely-cart-promo { display: flex; gap: 8px; margin-top: 16px; }
+  .pawely-cart-promo input { flex: 1; border: 1px solid #D8D4CA; border-radius: 10px; padding: 10px 14px; font-size: 0.85rem; background: #FAF8F5; color: #161C16; outline: none; }
+  .pawely-cart-promo input:focus { border-color: #1E3A2B; }
+  .pawely-cart-promo button { padding: 10px 16px; border-radius: 10px; background: #2B302B; color: #fff; border: none; font-size: 0.82rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
+</style>
+
+<div class="pawely-cart-wrap">
+  <div class="pawely-cart-inner">
+
+    {%- if cart.item_count == 0 -%}
+      <div class="pawely-cart-empty">
+        <svg class="pawely-cart-empty__icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/>
+        </svg>
+        <h1 class="pawely-cart-empty__title">Your cart is empty</h1>
+        <p class="pawely-cart-empty__text">Looks like you haven't added anything yet. Let's fix that.</p>
+        <a href="{{ routes.all_products_collection_url }}" class="pawely-cart-empty__btn">
+          Shop Now →
+        </a>
+      </div>
+
+    {%- else -%}
+
+      <h1 class="pawely-cart-heading">Your Cart</h1>
+      <p class="pawely-cart-subheading">{{ cart.item_count }} item{% if cart.item_count != 1 %}s{% endif %} ready for checkout</p>
+
+      <div class="pawely-cart-layout">
+
+        <!-- LEFT: Cart Items -->
+        <div>
+          <form action="{{ routes.cart_url }}" method="post" id="pawely-cart-form">
+            <div class="pawely-cart-items">
+              {%- for item in cart.items -%}
+                <div class="pawely-cart-item">
+                  <!-- Product Image -->
+                  {%- if item.image -%}
+                    <img
+                      class="pawely-cart-item__img"
+                      src="{{ item.image | image_url: width: 200 }}"
+                      alt="{{ item.image.alt | escape }}"
+                      width="88" height="88"
+                      loading="lazy"
+                    >
+                  {%- else -%}
+                    <div class="pawely-cart-item__img-placeholder">
+                      <svg width="28" height="28" fill="none" stroke="#D8D4CA" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                    </div>
+                  {%- endif -%}
+
+                  <!-- Body -->
+                  <div class="pawely-cart-item__body">
+                    <div class="pawely-cart-item__title">{{ item.product.title }}</div>
+                    {%- unless item.product.has_only_default_variant -%}
+                      <div class="pawely-cart-item__variant">{{ item.variant.title }}</div>
+                    {%- endunless -%}
+                    <div class="pawely-cart-item__price">{{ item.final_line_price | money }}</div>
+
+                    <div class="pawely-cart-item__actions">
+                      <!-- Quantity stepper -->
+                      <div class="pawely-qty">
+                        <button type="button" onclick="pawelyQtyChange('{{ item.key }}', -1)">−</button>
+                        <input
+                          id="pawely-qty-{{ item.key }}"
+                          type="number"
+                          name="updates[]"
+                          value="{{ item.quantity }}"
+                          min="0"
+                          data-key="{{ item.key }}"
+                          onchange="pawelyQtyUpdate('{{ item.key }}', this.value)"
+                        >
+                        <button type="button" onclick="pawelyQtyChange('{{ item.key }}', 1)">+</button>
+                      </div>
+                      <!-- Remove -->
+                      <button
+                        type="button"
+                        class="pawely-cart-item__remove"
+                        onclick="pawelyRemoveItem('{{ item.key }}')"
+                      >Remove</button>
+                    </div>
+                  </div>
+                </div>
+              {%- endfor -%}
+            </div>
+          </form>
+        </div>
+
+        <!-- RIGHT: Order Summary -->
+        <div>
+          <div class="pawely-cart-summary">
+            <div class="pawely-cart-summary__title">Order Summary</div>
+
+            {%- for item in cart.items -%}
+              <div class="pawely-cart-summary__row">
+                <span>{{ item.product.title | truncate: 28 }}{% unless item.product.has_only_default_variant %} · {{ item.variant.title | truncate: 16 }}{% endunless %} × {{ item.quantity }}</span>
+                <span>{{ item.final_line_price | money }}</span>
+              </div>
+            {%- endfor -%}
+
+            {%- if cart.cart_level_discount_applications.size > 0 -%}
+              {%- for discount in cart.cart_level_discount_applications -%}
+                <div class="pawely-cart-summary__row" style="color:#16a34a;">
+                  <span>Discount: {{ discount.title }}</span>
+                  <span>−{{ discount.total_allocated_amount | money }}</span>
+                </div>
+              {%- endfor -%}
+            {%- endif -%}
+
+            <div class="pawely-cart-summary__row">
+              <span>Shipping</span>
+              <span style="color:#16a34a; font-weight:700;">Free</span>
+            </div>
+
+            <div class="pawely-cart-summary__row pawely-cart-summary__row--total">
+              <span>Total</span>
+              <span>{{ cart.total_price | money_with_currency }}</span>
+            </div>
+
+            <!-- Promo code -->
+            <div class="pawely-cart-promo">
+              <input type="text" placeholder="Promo code" id="pawely-discount-input">
+              <button type="button">Apply</button>
+            </div>
+
+            <!-- Checkout -->
+            <a href="{{ routes.checkout_url }}" class="pawely-cart-summary__checkout">
+              Checkout →
+            </a>
+            <a href="{{ routes.all_products_collection_url }}" class="pawely-cart-summary__continue">
+              ← Continue Shopping
+            </a>
+
+            <p class="pawely-cart-summary__note">🔒 Secure checkout · Free worldwide shipping · 30-day returns</p>
+          </div>
+
+          <!-- Guarantee icons -->
+          <div class="pawely-cart-guarantees">
+            <div class="pawely-cart-guarantee">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/></svg>
+              <span>Free<br>Shipping</span>
+            </div>
+            <div class="pawely-cart-guarantee">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+              <span>30-Day<br>Returns</span>
+            </div>
+            <div class="pawely-cart-guarantee">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+              <span>Secure<br>Payment</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  function pawelyQtyChange(key, delta) {
+    var input = document.getElementById('pawely-qty-' + key);
+    if (!input) return;
+    var newVal = Math.max(0, parseInt(input.value) + delta);
+    input.value = newVal;
+    pawelyQtyUpdate(key, newVal);
+  }
+
+  function pawelyQtyUpdate(key, qty) {
+    var body = JSON.stringify({ id: key, quantity: parseInt(qty) });
+    fetch('/cart/change.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: body
+    })
+    .then(function(r) { return r.json(); })
+    .then(function() { window.location.reload(); });
+  }
+
+  function pawelyRemoveItem(key) {
+    pawelyQtyUpdate(key, 0);
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Pawely Cart",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Pawely Cart"
+    }
+  ]
+}
+{% endschema %}
