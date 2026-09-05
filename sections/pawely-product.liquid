@@ -10,7 +10,7 @@
   {% if featured_product != blank and featured_product.featured_image != blank %}
     <img width="800" height="800" id="pawely-main-img" alt="{{ featured_product.title | escape }}" class="hidden absolute inset-0 w-full h-full object-contain drop-shadow-xl z-20 bg-stone-50 p-6" src="{{ featured_product.featured_image | image_url: width: 800 }}">
   {% else %}
-    <img width="800" height="800" id="pawely-main-img" alt="Pawely Dog Shower Sprayer Main Showcase" class="hidden absolute inset-0 w-full h-full object-contain drop-shadow-xl z-20 bg-stone-50 p-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD92kRbUKp1h8FcN50pt-QC2n8nFKQlECGbtv0FrB57n2q1_693w7W0XDdmejY_bJvkWtgsrtHA4gHFz8RwnBaesdpLdqgAVj8MvfUEtkYEiJyDPEXPtdARZMAgv50HlXCHAn_8NgewQEZOO_HDO2ZaNi3-bJ6zpjx12V0PUq1eV-Hf7OqcfrDuxT1qHGA8qNGKrt8z-TDq_ocEaRsSrr64R2Ony3UPn8OKspswmVD07_mky1GKcuTrIA">
+    <img width="800" height="800" id="pawely-main-img" alt="PaWash™ Pet Washer Main Showcase" class="hidden absolute inset-0 w-full h-full object-contain drop-shadow-xl z-20 bg-stone-50 p-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD92kRbUKp1h8FcN50pt-QC2n8nFKQlECGbtv0FrB57n2q1_693w7W0XDdmejY_bJvkWtgsrtHA4gHFz8RwnBaesdpLdqgAVj8MvfUEtkYEiJyDPEXPtdARZMAgv50HlXCHAn_8NgewQEZOO_HDO2ZaNi3-bJ6zpjx12V0PUq1eV-Hf7OqcfrDuxT1qHGA8qNGKrt8z-TDq_ocEaRsSrr64R2Ony3UPn8OKspswmVD07_mky1GKcuTrIA">
   {% endif %}
 </div>
 
@@ -53,7 +53,7 @@
               #1 BESTSELLER
             </span>
 <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-dark tracking-tight mb-2">
-  {% if featured_product != blank %}{{ featured_product.title }}{% else %}Pawely Dog Shower Sprayer{% endif %}
+  {% if featured_product != blank %}{{ featured_product.title }}{% else %}PaWash™ Pet Washer{% endif %}
 </h2>
 <!-- Reviews and Rating stars -->
 <div class="flex items-center gap-2 mb-4">
@@ -270,7 +270,7 @@
 
 {% schema %}
 {
-  "name": "PawJet™ Product",
+  "name": "PaWash™ Product",
   "settings": [
     {
       "type": "product",
@@ -286,7 +286,7 @@
   ],
   "presets": [
     {
-      "name": "PawJet™ Product"
+      "name": "PaWash™ Product"
     }
   ]
 }

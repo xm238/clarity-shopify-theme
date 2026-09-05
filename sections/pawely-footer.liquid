@@ -61,10 +61,10 @@
 <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-stone-500 gap-4 text-[11px]">
 <span class="text-center sm:text-left">{{ section.settings.copyright_text }}</span>
 <div class="flex flex-wrap justify-center sm:justify-end items-center gap-3 sm:gap-5">
-<a class="hover:underline cursor-pointer" onclick="openPawelyPolicy(event, 'privacy', 'Privacy Policy')">Privacy Policy</a>
-<a class="hover:underline cursor-pointer" onclick="openPawelyPolicy(event, 'tos', 'Terms of Service')">Terms of Service</a>
-<a class="hover:underline cursor-pointer" onclick="openPawelyPolicy(event, 'shipping', 'Shipping Policy')">Shipping Policy</a>
-<a class="hover:underline cursor-pointer" onclick="openPawelyPolicy(event, 'refund', 'Return Policy')">Return Policy</a>
+<a class="hover:underline cursor-pointer" onclick="openPaWashPolicy(event, 'privacy', 'Privacy Policy')">Privacy Policy</a>
+<a class="hover:underline cursor-pointer" onclick="openPaWashPolicy(event, 'tos', 'Terms of Service')">Terms of Service</a>
+<a class="hover:underline cursor-pointer" onclick="openPaWashPolicy(event, 'shipping', 'Shipping Policy')">Shipping Policy</a>
+<a class="hover:underline cursor-pointer" onclick="openPaWashPolicy(event, 'refund', 'Return Policy')">Return Policy</a>
 </div>
 </div>
 </div>
@@ -72,13 +72,13 @@
 
 {% schema %}
 {
-  "name": "Pawely Footer",
+  "name": "PaWash Footer",
   "settings": [
     {
       "type": "text",
       "id": "brand_name",
       "label": "Brand Name",
-      "default": "PawJet™"
+      "default": "PaWash™"
     },
     {
       "type": "text",
@@ -90,7 +90,7 @@
       "type": "text",
       "id": "copyright_text",
       "label": "Copyright Text",
-      "default": "© 2024 PawJet™. All rights reserved."
+      "default": "© 2024 PaWash™. All rights reserved."
     }
   ]
 }
