@@ -108,7 +108,7 @@
       </div>
       
       <!-- Action Buttons -->
-      <div class="space-y-2.5 mb-6 pawely-actions">
+      <div class="flex items-center gap-2 mb-6 pawely-actions">
         <style>
           .pawely-actions .shopify-payment-button__button {
             border-radius: 0.75rem !important;
@@ -125,14 +125,14 @@
             background-color: #5A31F4 !important;
           }
         </style>
-        <button name="add" class="w-full font-bold text-sm py-3.5 rounded-xl transition shadow flex items-center justify-center hover:opacity-90" type="submit" style="background-color: #2A5934 !important; color: white !important;" {% if featured_product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
+        <button name="add" class="flex-1 font-bold text-sm py-3.5 rounded-xl transition shadow flex items-center justify-center hover:opacity-90" type="submit" style="background-color: #2A5934 !important; color: white !important;" {% if featured_product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
           {% if featured_product.selected_or_first_available_variant.available %}
             Add to Cart
           {% else %}
             Sold Out
           {% endif %}
         </button>
-        <div class="w-full">
+        <div class="flex-1">
           {{ form | payment_button }}
         </div>
       </div>
@@ -147,11 +147,11 @@
     </div>
     <span class="text-xs text-stone-500 font-medium">Quantity</span>
   </div>
-  <div class="space-y-2.5 mb-6">
-    <button class="w-full font-bold text-sm py-3.5 rounded-xl transition shadow hover:opacity-90" type="button" style="background-color: #2A5934 !important; color: white !important;">
+  <div class="flex items-center gap-2 mb-6">
+    <button class="flex-1 font-bold text-sm py-3.5 rounded-xl transition shadow hover:opacity-90" type="button" style="background-color: #2A5934 !important; color: white !important;">
       Add to Cart
     </button>
-    <button class="w-full font-bold text-sm py-3.5 rounded-xl transition flex items-center justify-center gap-1.5 shadow hover:opacity-90" type="button" style="background-color: #5A31F4 !important; color: white !important;">
+    <button class="flex-1 font-bold text-sm py-3.5 rounded-xl transition flex items-center justify-center gap-1.5 shadow hover:opacity-90" type="button" style="background-color: #5A31F4 !important; color: white !important;">
       <span class="">Buy with</span>
       <span class="font-black tracking-tight text-white italic">shop <span class="bg-white text-brand-shoppay px-1 rounded not-italic font-bold text-xs" style="color: #5A31F4 !important;">Pay</span></span>
     </button>
