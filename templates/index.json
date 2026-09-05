@@ -15,7 +15,7 @@
         "text_wxHzVb": {
           "type": "text",
           "settings": {
-            "text": "<p>Bath Time. Reinvented.</p>",
+            "text": "<p><strong>Bath Time. Reinvented.</strong></p>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -83,6 +83,7 @@
         "text_pNCQPC",
         "button_BWphGN"
       ],
+      "disabled": true,
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
