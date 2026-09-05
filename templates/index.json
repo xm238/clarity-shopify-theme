@@ -120,7 +120,7 @@
     "pawely_hero_LkfNBq": {
       "type": "pawely-hero",
       "disabled": true,
-      "name": "Pawely Hero",
+      "name": "PawJet™ Hero",
       "settings": {
         "eyebrow": "Bath Time, Made Easier",
         "heading": "A cleaner dog.<br>A happier you.",
@@ -131,7 +131,7 @@
     },
     "pawely_transformation_P7kMEq": {
       "type": "pawely-transformation",
-      "name": "Pawely Transformation",
+      "name": "PawJet™ Transformation",
       "settings": {
         "left_heading": "From muddy...",
         "left_subtext": "Muddy paws and messy park runs handled in seconds.",
@@ -141,7 +141,7 @@
     },
     "pawely_product_LmDrgb": {
       "type": "pawely-product",
-      "name": "Pawely Product",
+      "name": "PawJet™ Product",
       "settings": {
         "product": "",
         "short_description": "Turn any hose into a professional pet shower. Rinse, scrub, and clean your dog in minutes — at home, anytime."
@@ -149,7 +149,7 @@
     },
     "pawely_how_it_works_n6U7Kh": {
       "type": "pawely-how-it-works",
-      "name": "Pawely How It Works",
+      "name": "PawJet™ How It Works",
       "settings": {
         "heading": "How it works",
         "subheading": "Clean in 3 simple steps."
@@ -157,14 +157,14 @@
     },
     "pawely_reviews_QCCaQH": {
       "type": "pawely-reviews",
-      "name": "Pawely Reviews",
+      "name": "PawJet™ Reviews",
       "settings": {
         "heading": "Real dogs. Real happy owners."
       }
     },
     "pawely_faq_JKbDcx": {
       "type": "pawely-faq",
-      "name": "Pawely FAQ",
+      "name": "PawJet™ FAQ",
       "settings": {}
     }
   },
